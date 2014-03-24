@@ -1,4 +1,6 @@
 TheNag::Application.routes.draw do
+
+  get "dashboard" => "dashboards#dashboard", :as => :dashboard
   
   root :to => 'pages#home'
   
