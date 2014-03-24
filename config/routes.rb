@@ -1,4 +1,6 @@
 TheNag::Application.routes.draw do
+
+  get "dashboard" => "dashboards#dashboard", :as => :dashboard
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
