@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   
   # :password_digest removed from attr_accessible for security
   attr_accessible :fname, :lname, :email, :phone, 
-                  :passsword, :password_confirmation
+                  :password, :password_confirmation
   
   validates :fname, :presence => true
   validates :lname, :presence => true
