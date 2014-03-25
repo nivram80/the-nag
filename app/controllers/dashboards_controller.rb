@@ -1,7 +1,7 @@
 class DashboardsController < ApplicationController
 
 	def dashboard
-		@events = Event.order("due")
+		@events = Event.where(?????).order("due")
 		@event = Event.new
 	end
 
