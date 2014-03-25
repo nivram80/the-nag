@@ -1,7 +1,7 @@
 <html>
   <head>
+    
     <%= stylesheet_link_tag "home.css" %>
-
     
     <title>
       <p>The Nag</p>
@@ -9,7 +9,7 @@
   </head>
   <body>
     <div>
-    <img src="/assets/largelogo.png" style=" max-width: 350px; display:block; margin: 0 auto;margin-top: 100px;">
+    <img class ="logo" src="/assets/largelogo.png" style=" max-width: 350px; display:block; margin: 0 auto;margin-top: 100px;">
     <div>
       <p class = "center" > <%= link_to "SIGN UP", new_user_path %> | SIGN IN </p>
       <p><em>For testing, the session[:user_id] == <%= session[:user_id] %> </em></p>

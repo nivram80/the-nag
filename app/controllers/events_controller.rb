@@ -17,11 +17,18 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		@event = Event.create(params[:event])
-		redirect_to(:dashboard)
+		@event = Event.new(params[:event])
+		@events = Event.order("due")
+		if @event.save
+			redirect_to(:dashboard)
+		else
+			render :template => "dashboards/dashboard"
+		end
 	end
 
 	def destroy
+		Event.find(params[:id]).destroy
+		redirect_to(:dashboard)
 	end
 
 end

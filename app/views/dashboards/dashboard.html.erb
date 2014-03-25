@@ -1,6 +1,11 @@
 <h1>Dashboard</h1>
 <div class="lt_col left">
 	<%= form_for @event do |f| %>
+		<% if @event.errors.any? %>
+		  <% @event.errors.full_messages.each do |error_msg| %>
+		    <p><%= error_msg %></p>
+		  <% end %>
+		<% end %>
 		<p>
 			<%= f.label "Event Name: " %>
 			<%= f.text_field :name %>
@@ -21,7 +26,8 @@
 	<% if @events.size > 0 %>
 		<% @events.each do |event| %>
 			<h2><%= event.name %></h2>
-			<p><%= event.due.strftime("%m/%d/%y") %>
+			<p><%= event.due.strftime("%m/%d/%y") %></p>
+			<p><%= link_to "Delete Event", event_path(event.id), :method => :delete %></p>
 		<% end %>
 	<% else %>
 		<p>No Events!  Nobody is this organized!</p>
