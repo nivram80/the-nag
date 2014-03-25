@@ -7,7 +7,7 @@ gem 'pry-rails', :group => [:development, :test]
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-
+gem 'date_validator'
 
 # Gems used only for assets and not required
 # in production environments by default.
