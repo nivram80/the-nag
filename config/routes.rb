@@ -7,6 +7,7 @@ TheNag::Application.routes.draw do
   root :to => 'pages#home'
 
   resources :events
+end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -63,5 +64,3 @@ TheNag::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
->>>>>>> 803cdc2a16cb1d3ab16ffc005c31e0afbb938594:config/routes.rb
-end
