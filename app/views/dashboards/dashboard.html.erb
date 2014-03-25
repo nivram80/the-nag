@@ -18,6 +18,6 @@
 <div class="rt_col left">
 	<% @events.each do |event| %>
 		<h2><%= event.name %></h2>
-		<p><%= event.due %>
+		<p><%= event.due.strftime("%m/%d/%y") %>
 	<% end %>
 </div>
