@@ -21,7 +21,8 @@
 	<% if @events.size > 0 %>
 		<% @events.each do |event| %>
 			<h2><%= event.name %></h2>
-			<p><%= event.due.strftime("%m/%d/%y") %>
+			<p><%= event.due.strftime("%m/%d/%y") %></p>
+			<p><%= link_to "Delete Event", event_path(event.id), :method => :delete %></p>
 		<% end %>
 	<% else %>
 		<p>No Events!  Nobody is this organized!</p>
