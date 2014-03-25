@@ -11,6 +11,9 @@ TheNag::Application.routes.draw do
   # User routes
   resources :users, :except => [:index]
   
+  # Logins routes
+  resources :logins, :except => [:index]
+  
   resources :events
 
 end
