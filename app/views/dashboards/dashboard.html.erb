@@ -1,11 +1,12 @@
 <h1>Dashboard</h1>
 <div class="lt_col left">
-	<% if @event %>
-  <% @event.errors.full_messages.each do |error_msg| %>
-    <p><%= error_msg %></p>
-  <% end %>
-<% end %>
 	<%= form_for @event do |f| %>
+		<% if @event %>
+			<%= @event.errors.size %>
+		  <% @event.errors.full_messages.each do |error_msg| %>
+		    <p><%= error_msg %></p>
+		  <% end %>
+		<% end %>
 		<p>
 			<%= f.label "Event Name: " %>
 			<%= f.text_field :name %>
