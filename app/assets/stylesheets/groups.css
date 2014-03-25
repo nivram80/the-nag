@@ -1,0 +1,75 @@
+
+
+@font-face {
+    font-family: 'lobster_1.3regular';
+    src: url('lobster_1.3-webfont.eot');
+    src: url('lobster_1.3-webfont.eot?#iefix') format('embedded-opentype'),
+         url('lobster_1.3-webfont.woff') format('woff'),
+         url('lobster_1.3-webfont.ttf') format('truetype'),
+         url('lobster_1.3-webfont.svg#lobster_1.3regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+h2{
+  font-family:'lobster_1.3regular';
+  font-size: 50px;
+  text-align:center;
+}
+
+#formbackground{
+  background-color: #f16467;
+  height:400px;
+  max-width: 400px;
+  padding-left: 25px;
+  padding-right:25px;
+}
+.crown{
+  max-width: 80px;
+  padding-left: 30px;
+  margin-bottom: -40px;
+}
+
+#form{
+  height:400px;
+  width:100%;
+  max-width: 400px;
+  display:block;
+  margin: 0 auto;
+}
+
+.inputtimes1{
+  width: 100%;
+  padding: 20px;
+  text-align:center;
+  font-size: 20px;
+  margin-top:25px;
+  
+}
+
+.submittimes{
+  width:100%;
+  padding: 25px;
+  text-align:center;
+  font-size: 20px;
+}
+
+input[type=submit] {
+	padding:25px ; 
+	background: #8ec63f;
+	  transition-property: background;
+	  transition-duration: 1s;
+	  transition-timing-function: linear;
+	border:0 none;
+	cursor:pointer;
+	color: white;
+  text-align:center;
+  font-size: 20px;
+}
+
+input[type="submit"]:hover{
+   background: white;
+	color: gray;
+}

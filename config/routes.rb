@@ -4,7 +4,9 @@ TheNag::Application.routes.draw do
   
   root :to => 'pages#home'
   
-  get  "/add_group" => "groups#add"
+  resources :groups
+  
+ 
   
   
   # The priority is based upon order of creation:
