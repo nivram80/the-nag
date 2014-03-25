@@ -1,8 +1,17 @@
 <h1>Dashboard</h1>
 <div class="lt_col">
-
+	<%= form_for @event do |f| %>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+		<%= f.label :due %>
+		<%= f.text_field :due %>
+		<%= f.submit "Add" %>
+	<% end %>
 </div>
 
 <div class="rt_col">
-
+	<% @events.each do |event| %>
+		<h2><%= event.name %></h2>
+		<p><%= event.due %>
+	<% end %>
 </div>
