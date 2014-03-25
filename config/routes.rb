@@ -5,7 +5,7 @@ TheNag::Application.routes.draw do
   root :to => 'pages#home'
 
   # User routes
-  resources :users
+  resources :users, :except => [:index]
   
   resources :events
 

@@ -14,5 +14,6 @@ class User < ActiveRecord::Base
   validates :fname, :presence => true
   validates :lname, :presence => true
   validates :email, :presence => true, :uniqueness => true
+  validates :phone, :length => {:maximum => 10} 
   # has_secure_password validates that 'password' matches 'password_confirmation'
 end

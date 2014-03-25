@@ -1,1 +1,7 @@
-<h1>Show User Info</h1>
+<h1>Account Information</h1>
+<p>User Name: <%= @user.fname %> <%= @user.lname %></p>
+<p>Email: <%= @user.email %></p>
+<p>Phone: <%= number_to_phone(@user.phone, area_code: true) %></p>
+<hr>
+<%= link_to("Edit User Account", edit_user_path(@user.id)) %>
+<%= link_to("Delete User Account", user_path(@user.id), :method => "delete") %>
