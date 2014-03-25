@@ -1,5 +1,10 @@
 <h1>Dashboard</h1>
 <div class="lt_col left">
+	<% if @event %>
+  <% @event.errors.full_messages.each do |error_msg| %>
+    <p><%= error_msg %></p>
+  <% end %>
+<% end %>
 	<%= form_for @event do |f| %>
 		<p>
 			<%= f.label "Event Name: " %>
