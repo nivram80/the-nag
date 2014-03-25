@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
 	def index
-		@events = Event.order("due DESC")
+		#@events = Event.order("due ASC")
 	end
 
 	def show
@@ -17,11 +17,12 @@ class EventsController < ApplicationController
 	end
 
 	def new
-
+		@event = Event.new
 	end
 
 	def create
-
+		@event = Event.create(params[:event])
+		redirect_to(:dashboard)
 	end
 
 	def destroy

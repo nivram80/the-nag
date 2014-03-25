@@ -1,15 +1,21 @@
 <h1>Dashboard</h1>
-<div class="lt_col">
+<div class="lt_col left">
 	<%= form_for @event do |f| %>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-		<%= f.label :due %>
-		<%= f.text_field :due %>
-		<%= f.submit "Add" %>
+		<p>
+			<%= f.label "Event Name: " %>
+			<%= f.text_field :name %>
+			<div>
+				<%= f.label "Due: ", :class => "left" %>
+				<%= f.date_select :due, start_year: Time.now.year, use_short_month: true, order: [:month, :day, :year] %>
+			</div>
+		</p>
+		<p>
+			<%= f.submit "Add" %>
+		</p>
 	<% end %>
 </div>
 
-<div class="rt_col">
+<div class="rt_col left">
 	<% @events.each do |event| %>
 		<h2><%= event.name %></h2>
 		<p><%= event.due %>
