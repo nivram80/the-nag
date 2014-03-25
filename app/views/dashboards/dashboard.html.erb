@@ -6,7 +6,9 @@
 			<%= f.text_field :name %>
 			<div>
 				<%= f.label "Due: ", :class => "left" %>
-				<%= f.date_select :due, start_year: Time.now.year, use_short_month: true, order: [:month, :day, :year] %>
+				<%= f.date_select :due, start_year: Time.now.year, 
+																use_short_month: true, 
+																order: [:month, :day, :year] %>
 			</div>
 		</p>
 		<p>
@@ -16,8 +18,12 @@
 </div>
 
 <div class="rt_col left">
-	<% @events.each do |event| %>
-		<h2><%= event.name %></h2>
-		<p><%= event.due.strftime("%m/%d/%y") %>
+	<% if @events.size > 0 %>
+		<% @events.each do |event| %>
+			<h2><%= event.name %></h2>
+			<p><%= event.due.strftime("%m/%d/%y") %>
+		<% end %>
+	<% else %>
+		<p>No Events!  Nobody is this organized!</p>
 	<% end %>
 </div>
