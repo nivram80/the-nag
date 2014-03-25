@@ -1,19 +1,15 @@
 class EventsController < ApplicationController
 
 	def index
-		#@events = Event.order("due ASC")
 	end
 
 	def show
-
 	end
 
 	def edit
-
 	end
 
 	def update
-
 	end
 
 	def new
@@ -26,7 +22,6 @@ class EventsController < ApplicationController
 	end
 
 	def destroy
-
 	end
 
 end
