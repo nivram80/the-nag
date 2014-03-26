@@ -9,6 +9,13 @@
 </head>
 <body>
 
+  <% if current_user %>
+    <hr>
+    <p> Welcome to the Nag, <%= "#{current_user.fname} #{current_user.lname}" %>!</p>
+    <%= link_to("Log Out", login_path(current_user.id), :method => :delete) %>
+    <hr>
+  <% end %>
+  
 <%= yield %>
 
 </body>
