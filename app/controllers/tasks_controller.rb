@@ -5,37 +5,26 @@ class TasksController < ApplicationController
   #   self[attribute] = !send("#{attribute}?")
   #   self
   # end
-  
-  def index
-    
-    redirect_to(:dashboard)
-  end
-  
-  # def show
-  #   @article = Article.find(params[:id])
-  # end    
-  
-  def edit
-    @task = Task.find(params[:id])
-  end
-  
-  def update
-    @task = Task.find(params[:id])
-    @task.update_attributes(params[:task])
-    redirect_to(:dashboard)
-    
-  end
-    
   def new
-    @task = Task.new #blank paper
+    @tasks = Task.new 
   end
   
   def create
-    @task = Task.new(params[:task])
+    @tasks = Task.new(params[:task])
     
-    if @task.save
+    if @tasks.save
       redirect_to(:dashboard)
     end
+  end
+  
+  def edit
+    @tasks = Task.find(params[:id])
+  end
+  
+  def update
+    @tasks = Task.find(params[:id])
+    @tasks.update_attributes(params[:task])
+    redirect_to(:dashboard)    
   end
       
   def destroy

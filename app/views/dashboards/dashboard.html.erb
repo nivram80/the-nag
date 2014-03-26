@@ -28,25 +28,9 @@
 	<% end %>
 </div>
 
-<div class="lt_col left">
-  <%= form_for @task do |f| %>
-  <p>
-    <%= f.check_box :done %>
-  
-    <%= f.text_field :description %>
-  </p>
-  
-  <%= f.submit %>
-<% end %>
-</div>
-
-<div class="lt_col left">
-<%= form_for @task do |f| %>
-  <p>  
-    <%= f.text_field :description %>
-  </p>
-  
-  <%= f.submit %>
+<div class="task list">
+  <% @tasks.each do |task| %>
+  <%= task.desc %>
 <% end %>
 </div>
 

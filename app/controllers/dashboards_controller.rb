@@ -6,8 +6,4 @@ class DashboardsController < ApplicationController
 		@events = Event.order("due")
 		@event = Event.create(params[:event])
 	end
-  
-  
-  
-
 end
