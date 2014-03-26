@@ -2,16 +2,28 @@
   <head>
     
     <%= stylesheet_link_tag "home.css" %>
-    
+
+ <!-- Removed the <p> tag surrounding the title string. 
+   It's not needed and looks awkward in the window title. -->   
     <title>
-      <p>The Nag</p>
+      The Nag
     </title>
   </head>
   <body>
+    
     <div>
     <img class ="logo" src="/assets/largelogo.png" style=" max-width: 350px; display:block; margin: 0 auto;margin-top: 100px;">
     <div>
-      <p class = "center" > <%= link_to "SIGN UP", new_user_path %> | SIGN IN </p>
-      <p><em>For testing, the session[:user_id] == <%= session[:user_id] %> </em></p>
+      <p class = "center" > 
+        <%= link_to "SIGN UP", :new_user %> | 
+        <% link_text = session[:try_again] ? "SIGN IN (try again)" : "SIGN IN" %>
+        <% if session[:user_id] %>
+          <%= link_to "Dashboard", :dashboard %>
+        <% else %>
+          <%= link_to link_text, :new_login %>
+        <% end %>
+      </p>
+      <p><em>For testing, the <strong>session[:user_id] == <%= session[:user_id] || "NONE" %> </strong></em></p>
+      
   </body>
 </html>
