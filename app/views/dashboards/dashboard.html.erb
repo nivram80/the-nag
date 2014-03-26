@@ -24,14 +24,23 @@
 </div>
 
 <div class="rt_col left">
-	<% if @events.size > 0 %>
 
-		<% @events.each do |event| %>
-			<h2><%= event.name %></h2>
-			<p><%= event.due.strftime("%m/%d/%y") %></p>
-			<p><%= link_to "Delete Event", event_path(event.id), :method => :delete %></p>
+	<%= form_for "sel_event", url: :dashboard, method: :get do |e| %>
+		<p>
+			<%= e.label "Switch event:" %>
+			<%#= e.select "Switch event:", [["Dad", "Fred"], ["Mom", "Wilma"]] %>
+			<%= collection_select(:event, :id, Event.where("user_id = ?", session[:user_id]), :id, :name) %>
+			<%= e.submit %>
+		</p>
+	<% end %>
 
-			<% event.groups.each do |group| %>
+	<% if @selected_event %>
+		<%# @events.each do |event| %>
+			<h2><%= @selected_event.name %></h2>
+			<p><%= @selected_event.due.strftime("%m/%d/%y") %></p>
+			<p><%= link_to "Delete Event", event_path(@selected_event.id), :method => :delete %></p>
+
+			<% @selected_event.groups.each do |group| %>
 				<h3 class="group"><%= group.name %></h3>
 					
 					<ul>
@@ -54,8 +63,6 @@
 					<% end %>
 
 			<% end %> <!-- End of @groups loop -->
-
-		<% end %> <!-- End of @events loop -->
 
 	<% else %>
 
