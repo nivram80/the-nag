@@ -14,7 +14,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])    
     if @user.save
       session[:user_id] = @user.id  # Auto login to session on new user creation
-      redirect_to(:root)
+      session[:try_again] = false
+      redirect_to(:dashboard)
     else
       render "new"
     end
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
     # binding.pry
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      redirect_to(:root)
+      redirect_to(:dashboard)
     else
       render "edit"
     end  
