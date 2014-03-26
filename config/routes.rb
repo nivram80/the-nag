@@ -3,7 +3,7 @@ TheNag::Application.routes.draw do
   resources :tasks
 
   get "dashboard" => "dashboards#dashboard", :as => :dashboard
-  
+
   root :to => 'pages#home'
   
   resources :groups

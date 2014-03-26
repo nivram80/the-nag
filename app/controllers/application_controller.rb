@@ -6,9 +6,7 @@ class ApplicationController < ActionController::Base
       redirect_to :new_login
     end
   end
-  
-  private
-  
+    
   # Return either 'nil' or a User object.
   def current_user
     if session[:user_id]
@@ -16,6 +14,10 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  helper_method :current_user
+  def logged_in?
+      current_user != nil
+  end
+  
+  helper_method :current_user, :logged_in?
   
 end

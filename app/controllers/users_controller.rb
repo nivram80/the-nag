@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])    
     if @user.save
       session[:user_id] = @user.id  # Auto login to session on new user creation
+      session[:try_again] = false
       redirect_to(:dashboard)
     else
       render "new"
