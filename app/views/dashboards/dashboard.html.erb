@@ -32,14 +32,16 @@
 			<p><%= link_to "Delete Event", event_path(event.id), :method => :delete %></p>
 
 			<% event.groups.each do |group| %>
-				<h3><%= group.name %></h3>
+				<h3 class="group"><%= group.name %></h3>
 					
 					<ul>
-						<% group.tasks.each do |task| %>
-							<li>
-								<%= link_to "Done", task_path(task.id, :done => true), :method => :put, :class => (task.done ? 'left done' : 'left not_done') %>
-								<%= task.desc %>
-								<%= link_to "Delete", task_path(task.id), :method => :delete %>
+						<% ordered_tasks = group.tasks.order("created_at DESC") %>
+						<% ordered_tasks.each do |task| %>
+							<li class="task">
+									<div class="left checkbox">
+										<%= link_to "Done", task_path(task.id), :method => :put, :class => (task.done ? 'done' : 'not_done') %></div>
+									<div class="left desc"><%= task.desc %></div>
+									<div class="left"><%= link_to "Delete", task_path(task.id), :method => :delete, :class => "delete" %></div>
 							</li>
 						<% end %> <!-- End of @tasks loop -->
 					</ul>

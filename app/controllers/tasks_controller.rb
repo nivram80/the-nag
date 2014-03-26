@@ -7,8 +7,8 @@ class TasksController < ApplicationController
   # end
   
   def index
-    @task = Task.all
-    redirect_to(:dashboard)
+    #@tasks = Task.order(:desc)
+    #redirect_to(:dashboard)
   end
   
   # def show
@@ -21,7 +21,11 @@ class TasksController < ApplicationController
   
   def update
     @task = Task.find(params[:id])
-    @task.update_attributes({:done => params[:done]})
+    if @task.done
+      @task.update_attributes({:done => false})
+    else
+      @task.update_attributes({:done => true})
+    end
     redirect_to(:dashboard)
   end
     
@@ -41,4 +45,5 @@ class TasksController < ApplicationController
     Task.find(params[:id]).destroy
     redirect_to(:dashboard)
   end
+
 end

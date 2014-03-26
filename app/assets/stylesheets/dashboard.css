@@ -7,9 +7,47 @@
 .rt_col {
 	width: 45%;
 }
+.group {
+	font-size: 40px;	
+}
+.task {
+	list-style-type: none;
+	font-size: 36px;
+	margin: 0 0 20px 0;
+	padding-bottom: 20px;
+	height: 25px;
+}
+/* .task:hover {
+	background-color: #eee;
+} */
+.task div a {
+	width: 50px;
+	height: 0;
+	padding-top: 50px;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	display: inline-block;
+}
+.task .desc {
+	margin: 0;
+}
+.delete {
+	background-position: 20px 10px;
+	background-image: url('close.png');
+	opacity: 0.30;
+	transition: opacity 1s ease;
+}
+.delete:hover {
+	opacity: 1.0;
+}
 .done {
-	background-image: url('checked_50.png');
+	background-position: 0px 7px;
+	background-image: url('checked_30.png');
 }
 .not_done {
-	background-image: url('unchecked_50.png');
+	background-position: 0px 7px;
+	background-image: url('unchecked_30.png');
+}
+.new_task {
+	margin: 0 0 0 38px;
 }
