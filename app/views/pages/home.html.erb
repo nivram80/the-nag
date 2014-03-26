@@ -13,17 +13,26 @@
     
     <div>
     <img class ="logo" src="/assets/largelogo.png" style=" max-width: 350px; display:block; margin: 0 auto;margin-top: 100px;">
+    </div>
+    
     <div>
       <p class = "center" > 
         <%= link_to "SIGN UP", :new_user %> | 
-        <% link_text = session[:try_again] ? "SIGN IN (try again)" : "SIGN IN" %>
         <% if session[:user_id] %>
           <%= link_to "Dashboard", :dashboard %>
         <% else %>
-          <%= link_to link_text, :new_login %>
+          <%= link_to "LOG IN", :new_login %>
         <% end %>
       </p>
-      <p><em>For testing, the <strong>session[:user_id] == <%= session[:user_id] || "NONE" %> </strong></em></p>
+      <% if flash[:notice] %>
+        <p class="center notice"><%= flash[:notice] %></p>
+      <% end %>
+    </div>
+    
+<!--
+     <p><em>For testing, the <strong>session[:user_id] == 
+        <%= session[:user_id] || "NONE" %> </strong></em></p> 
+-->
       
   </body>
 </html>
