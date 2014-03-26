@@ -3,7 +3,7 @@ TheNag::Application.routes.draw do
   resources :tasks
 
   get "dashboard" => "dashboards#dashboard", :as => :dashboard
-  
+
   root :to => 'pages#home'
   
   resources :groups
@@ -12,10 +12,14 @@ TheNag::Application.routes.draw do
   
   get "groups/new" => "groups#new", :as => :new_group
   
+  post "groups/newtask" => "tasks#new_task_for_group", :as => :new_task_for_group
   
 
-  # User routes
+  # User routes (All RESTful routes except :index)
   resources :users, :except => [:index]
+  
+  # Logins routes (Only :new, :create, :destroy RESTful routes)
+  resources :logins, :only => [:new, :create, :destroy]
   
   resources :events
 

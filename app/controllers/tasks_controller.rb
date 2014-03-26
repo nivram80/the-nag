@@ -1,22 +1,16 @@
 class TasksController < ApplicationController
   # before_filter :authorize, :only => [:new, :edit, :create, :update]
   
-  # def toggle(attribute)
-  #   self[attribute] = !send("#{attribute}?")
-  #   self
-  # end
-  
-  def index
-    #@tasks = Task.order(:desc)
-    #redirect_to(:dashboard)
+  def create
+    @tasks = Task.new(params[:task])
+    
+    if @tasks.save
+      redirect_to(:dashboard)
+    end
   end
   
-  # def show
-  #   @article = Article.find(params[:id])
-  # end    
-  
   def edit
-    @task = Task.find(params[:id])
+    @tasks = Task.find(params[:id])
   end
   
   def update
@@ -30,15 +24,26 @@ class TasksController < ApplicationController
   end
     
   def new
-    @task = Task.new
+    @tasks = Task.find(params[:id])
+    @tasks.update_attributes(params[:task])
+    redirect_to(:dashboard)    
+
+    @task = Task.new(params[:task])
+    if @task.save 
+      redirect_to(:dashboard)
+    end
   end
   
-  def create
+  def new_task_for_group
     @task = Task.new(params[:task])
     
     if @task.save
-      redirect_to(:dashboard)
+      redirect_to(group_path(@task.group_id))
     end
+  end
+  
+  def show
+    
   end
       
   def destroy
