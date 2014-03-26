@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   # end
   
   def index
-    @task = Task.all
+    
     redirect_to(:dashboard)
   end
   
@@ -22,10 +22,12 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     @task.update_attributes(params[:task])
+    redirect_to(:dashboard)
+    
   end
     
   def new
-    @task = Task.new
+    @task = Task.new #blank paper
   end
   
   def create
