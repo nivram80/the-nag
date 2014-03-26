@@ -49,6 +49,44 @@ h2{
   
 }
 
+.newtasklist{
+  text-align:center;
+  
+}
+
+.buttontimes {
+  
+	padding:25px ; 
+	background: #8ec63f;
+	  transition-property: background;
+	  transition-duration: 1s;
+	  transition-timing-function: linear;
+	border:0 none;
+	cursor:pointer;
+	color: white;
+  text-align:center;
+  font-size: 20px;
+}
+.buttontimes:hover {
+  background: red;
+color: white;
+}
+  
+  
+.showtitle{
+  text-align:center;
+  font-size: 35px;
+  padding: 25px;
+  color: white;
+}
+.creategrouptasks{
+  width: 100%;
+  padding: 20px;
+  text-align:center;
+  font-size: 20px;
+  
+}
+
 .submittimes{
   width:100%;
   padding: 25px;

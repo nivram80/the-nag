@@ -7,6 +7,12 @@ TheNag::Application.routes.draw do
   root :to => 'pages#home'
   
   resources :groups
+  
+  get "groups/newgrouptask" => "groups#newgrouptask", :as => :new_task
+  
+  get "groups/new" => "groups#new", :as => :new_group
+  
+  
 
   # User routes (All RESTful routes except :index)
   resources :users, :except => [:index]
