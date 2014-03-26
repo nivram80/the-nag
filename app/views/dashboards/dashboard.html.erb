@@ -1,6 +1,11 @@
 <h1>Dashboard</h1>
 <div class="lt_col left">
 	<%= form_for @event do |f| %>
+		<% if @event.errors.any? %>
+		  <% @event.errors.full_messages.each do |error_msg| %>
+		    <p><%= error_msg %></p>
+		  <% end %>
+		<% end %>
 		<p>
 			<%= f.label "Event Name: " %>
 			<%= f.text_field :name %>
@@ -10,6 +15,7 @@
 																use_short_month: true, 
 																order: [:month, :day, :year] %>
 			</div>
+			<%= f.hidden_field :user_id, :value => session[:user_id] %>
 		</p>
 		<p>
 			<%= f.submit "Add" %>
@@ -19,19 +25,38 @@
 
 <div class="rt_col left">
 	<% if @events.size > 0 %>
+
 		<% @events.each do |event| %>
 			<h2><%= event.name %></h2>
-			<p><%= event.due.strftime("%m/%d/%y") %>
-		<% end %>
+			<p><%= event.due.strftime("%m/%d/%y") %></p>
+			<p><%= link_to "Delete Event", event_path(event.id), :method => :delete %></p>
+
+			<% event.groups.each do |group| %>
+				<h3><%= group.name %></h3>
+					
+					<ul>
+						<% group.tasks.each do |task| %>
+							<li class="<%= task.done ? 'done' : 'not_done' %>">
+								<%= link_to "Done", task_path(task.id, :done => true), :method => :put %>
+								<%= task.desc %>
+								<%= link_to "Delete", task_path(task.id), :method => :delete %>
+							</li>
+						<% end %> <!-- End of @tasks loop -->
+					</ul>
+
+					<%= form_for @task do |t| %>
+						<p><%= t.text_field :desc, :value => "Add Task"	%></p>
+							 <%= t.hidden_field :done, :value => false %>
+							 <%= t.hidden_field :group_id, :value => group.id %>
+							 <%= t.submit %>
+					<% end %>
+
+			<% end %> <!-- End of @groups loop -->
+
+		<% end %> <!-- End of @events loop -->
+
 	<% else %>
+
 		<p>No Events!  Nobody is this organized!</p>
 	<% end %>
 </div>
-
-<div class="task list">
-  <% @tasks.each do |task| %>
-  <%= task.desc %>
-<% end %>
-</div>
-
-

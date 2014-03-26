@@ -5,9 +5,16 @@ TheNag::Application.routes.draw do
   get "dashboard" => "dashboards#dashboard", :as => :dashboard
   
   root :to => 'pages#home'
+  
+  resources :groups
 
+  # User routes
+  resources :users, :except => [:index]
+  
   resources :events
+
 end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

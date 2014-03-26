@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   #   self[attribute] = !send("#{attribute}?")
   #   self
   # end
+  
   def new
     @tasks = Task.new 
   end
@@ -28,7 +29,7 @@ class TasksController < ApplicationController
   end
       
   def destroy
-    session[:user_id] = nil
+    Task.find(params[:id]).destroy
     redirect_to(:dashboard)
   end
 end
