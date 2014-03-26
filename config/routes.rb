@@ -8,11 +8,11 @@ TheNag::Application.routes.draw do
   
   resources :groups
 
-  # User routes
+  # User routes (All RESTful routes except :index)
   resources :users, :except => [:index]
   
-  # Logins routes
-  resources :logins, :except => [:index]
+  # Logins routes (Only :new, :create, :destroy RESTful routes)
+  resources :logins, :only => [:new, :create, :destroy]
   
   resources :events
 
