@@ -25,12 +25,39 @@
 
 <div class="rt_col left">
 	<% if @events.size > 0 %>
+
 		<% @events.each do |event| %>
 			<h2><%= event.name %></h2>
 			<p><%= event.due.strftime("%m/%d/%y") %></p>
 			<p><%= link_to "Delete Event", event_path(event.id), :method => :delete %></p>
-		<% end %>
+
+			<% event.groups.each do |group| %>
+				<h3><%= group.name %></h3>
+					
+					<ul>
+						<% group.tasks.each do |task| %>
+							<li class="<%= task.done ? 'done' : 'not_done' %>">
+								<%= link_to "Done", task_path(task.id, :done => true), :method => :put %>
+								<%= task.desc %>
+								<%= link_to "Delete", task_path(task.id), :method => :delete %>
+							</li>
+						<% end %> <!-- End of @tasks loop -->
+					</ul>
+
+					<%= form_for @task do |t| %>
+						<p><%= t.text_field :desc, :value => "Add Task"	%></p>
+							 <%= t.hidden_field :done, :value => false %>
+							 <%= t.hidden_field :group_id, :value => group.id %>
+							 <%= t.submit %>
+					<% end %>
+
+			<% end %> <!-- End of @groups loop -->
+
+		<% end %> <!-- End of @events loop -->
+
 	<% else %>
+
 		<p>No Events!  Nobody is this organized!</p>
-	<% end %>
+
+	<% end %> <!-- End of if statement -->
 </div>

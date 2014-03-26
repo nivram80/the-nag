@@ -21,7 +21,8 @@ class TasksController < ApplicationController
   
   def update
     @task = Task.find(params[:id])
-    @task.update_attributes(params[:task])
+    @task.update_attributes({:done => params[:done]})
+    redirect_to(:dashboard)
   end
     
   def new
@@ -37,7 +38,7 @@ class TasksController < ApplicationController
   end
       
   def destroy
-    session[:user_id] = nil
+    Task.find(params[:id]).destroy
     redirect_to(:dashboard)
   end
 end
