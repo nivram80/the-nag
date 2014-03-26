@@ -15,6 +15,12 @@
          <p style="margin-top: 20px;">
            <%= f.text_field :name, :class => "inputtimes1",:placeholder => "Name" %>
          </p>
+         <%= fields_for @task do |t|%>
+         <%= t.text_field :desc , :class => "creategrouptasks"%>
+         <%= t.hidden_field(:group_id, :value => @group.id)%>
+         
+         
+         <% end %>
 
 
          <%= f.submit :class => "submittimes"%>

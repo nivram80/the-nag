@@ -6,7 +6,11 @@ TheNag::Application.routes.draw do
   
   resources :groups
   
- 
+  resources :tasks
+  
+  get "groups/newgrouptask" => "groups#newgrouptask", :as => :new_task
+  
+  get "groups/new" => "groups#new", :as => :new_group
   
   
 
