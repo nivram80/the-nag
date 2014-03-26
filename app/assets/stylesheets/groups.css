@@ -21,7 +21,6 @@ h2{
 
 #formbackground{
   background-color: #f16467;
-  height:400px;
   max-width: 400px;
   padding-left: 25px;
   padding-right:25px;
@@ -38,6 +37,9 @@ h2{
   max-width: 400px;
   display:block;
   margin: 0 auto;
+}
+#insideform{
+  background: white;
 }
 
 .inputtimes1{

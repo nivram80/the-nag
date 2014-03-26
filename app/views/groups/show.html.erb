@@ -10,20 +10,26 @@
    <div id="form">
      <img class ="crown" src="/assets/crown.png">
      <h2 class="titlething">Create Group2</h2>
+     <div id="insideform">
      <div id="formbackground">
        <p class="showtitle"><%= @group.name %></p>
-  	   <% @tasks.each do |task|%>
-  	   		<p style="text-align:center;"><%= task.desc %></p>
-  	   <%end%>
-       <%= form_for @task do |f| %>
-       <%= f.text_field :desc , :class => "creategrouptasks",:placeholder => "ADD TASK"%>
-       <%= f.hidden_field :group_id, :value => @group.id %>
-       <%= f.hidden_field :id, :value => @group.id %>
-       <%= f.submit :class => "submittimes"%>
-       <% end %>
-       <button class="buttontimes" type="button">FINISH</button>
+       
+    	   <% @tasks.each do |task|%>
+    	   		<p style="text-align:center;"><%= task.desc %></p>
+    	   <%end%>
+         <%= form_for @task, :url => new_task_for_group_path do |f| %>
+         <%= f.text_field :desc , :class => "creategrouptasks",:placeholder => "ADD TASK"%>
+         <%= f.hidden_field :group_id, :value => @group.id %>
+         <%= f.hidden_field :id, :value => @group.id %>
+         <%= f.hidden_field :done, :value => false %>
+         <%= f.submit :class => "submittimes"%>
+         <% end %>
+         <a href="/dashboard">
+         <button class="buttontimes" type="button">FINISH</button>
+         </a>
        
     
+     </div>
      </div>
    </div>
 </body>
