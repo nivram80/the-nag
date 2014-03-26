@@ -1,4 +1,4 @@
-class GroupsController < ActionController::Base
+class GroupsController < ApplicationController
   protect_from_forgery
   
   def new
