@@ -8,5 +8,8 @@
 	width: 45%;
 }
 .done {
-	text-decoration: line-through;
+	background-image: url('checked_50.png');
+}
+.not_done {
+	background-image: url('unchecked_50.png');
 }

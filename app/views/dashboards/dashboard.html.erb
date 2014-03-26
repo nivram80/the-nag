@@ -36,8 +36,8 @@
 					
 					<ul>
 						<% group.tasks.each do |task| %>
-							<li class="<%= task.done ? 'done' : 'not_done' %>">
-								<%= link_to "Done", task_path(task.id, :done => true), :method => :put %>
+							<li>
+								<%= link_to "Done", task_path(task.id, :done => true), :method => :put, :class => (task.done ? 'left done' : 'left not_done') %>
 								<%= task.desc %>
 								<%= link_to "Delete", task_path(task.id), :method => :delete %>
 							</li>
