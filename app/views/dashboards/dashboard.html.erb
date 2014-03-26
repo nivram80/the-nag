@@ -31,22 +31,22 @@
 			<p><%= event.due.strftime("%m/%d/%y") %></p>
 			<p><%= link_to "Delete Event", event_path(event.id), :method => :delete %></p>
 
-			<% @groups.each do |group| %>
+			<% event.groups.each do |group| %>
 				<h3><%= group.name %></h3>
 					<ul>
 
-						<% @tasks.each do |task| %>
+						<% group.tasks.each do |task| %>
 							<li><%= task.desc %></li>
-						<% end %> # End of @tasks loop
+						<% end %> <!-- End of @tasks loop -->
 
 					</ul>
-			<% end %> # End of @groups loop
+			<% end %> <!-- End of @groups loop -->
 
-		<% end %> # End of @events loop
+		<% end %> <!-- End of @events loop -->
 
 	<% else %>
 
 		<p>No Events!  Nobody is this organized!</p>
-		
-	<% end %> # End of if statement
+
+	<% end %> <!-- End of if statement -->
 </div>
