@@ -1,10 +1,10 @@
 class TasksController < ApplicationController
   # before_filter :authorize, :only => [:new, :edit, :create, :update]
   
-  # def toggle(attribute)
-  #   self[attribute] = !send("#{attribute}?")
-  #   self
-  # end
+  def toggle(:boolean)
+    self[:boolean] = !send("#{attribute}?")
+    self
+  end
   
   def new
     @tasks = Task.new 
