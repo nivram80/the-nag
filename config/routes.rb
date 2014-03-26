@@ -12,6 +12,7 @@ TheNag::Application.routes.draw do
   
   get "groups/new" => "groups#new", :as => :new_group
   
+  post "groups/newtask" => "tasks#new_task_for_group", :as => :new_task_for_group
   
 
   # User routes

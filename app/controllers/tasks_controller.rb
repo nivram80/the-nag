@@ -31,10 +31,21 @@ class TasksController < ApplicationController
   
   def create
     @task = Task.new(params[:task])
-    
-    if @task.save
+    if @task.save 
       redirect_to(:dashboard)
     end
+  end
+  
+  def new_task_for_group
+    @task = Task.new(params[:task])
+    
+    if @task.save
+      redirect_to(group_path(@task.group_id))
+    end
+  end
+  
+  def show
+    
   end
       
   def destroy
