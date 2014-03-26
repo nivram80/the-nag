@@ -33,13 +33,19 @@
 
 			<% event.groups.each do |group| %>
 				<h3><%= group.name %></h3>
-					<ul>
-
+					
+					<%= form_for @task do |t| %>
 						<% group.tasks.each do |task| %>
-							<li><%= task.desc %></li>
+							<p><%= t.check_box :desc %> <%= task.desc %></li>
 						<% end %> <!-- End of @tasks loop -->
 
-					</ul>
+					<% end %>
+					<%= form_for @task do |t| %>
+						<p><%= t.text_field :desc, :value => "Add Task"	%></p>
+							 <%= t.hidden_field :done, :value => false %>
+							 <%= t.submit %>
+					<% end %>
+
 			<% end %> <!-- End of @groups loop -->
 
 		<% end %> <!-- End of @events loop -->

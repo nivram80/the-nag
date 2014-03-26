@@ -6,7 +6,7 @@ class DashboardsController < ApplicationController
 
 		#@groups = Group.event.where("event.id = ?", session[:user_id])
 
-		#@tasks = Task.where("group_id = ?", @group)
+		@task = Task.new
 	end
 
 end
