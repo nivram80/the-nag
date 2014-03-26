@@ -1,25 +1,16 @@
-<html>
-<head>
-   <%= stylesheet_link_tag "groups.css" %>
 
-  <title>
-    The Nag
-  </title>
-</head>
-<body  style="margin-top: 100px;">
+<div  style="margin-top: 100px;">
    <div id="form">
      <img class ="crown" src="/assets/crown.png">
      <h2 class="titlething">Create Group</h2>
      <div id="formbackground">
-  	   <% @tasks.each do |task|%>
-  	   		<p><%= task.desc %></p>
-  	   <%end%>
+       
        <%= form_for @group do |f| %>
          <p style="margin-top: 20px;">
            <%= f.text_field :name, :class => "inputtimes1",:placeholder => "Name" %>
          </p>
          <%= fields_for @task do |t|%>
-         <%= t.text_field :desc , :class => "creategrouptasks"%>
+           <%= t.text_field :desc , :class => "creategrouptasks"%>
 
          <% end %>
 
@@ -29,5 +20,4 @@
     
      </div>
    </div>
-</body>
-</html>
+</div>
