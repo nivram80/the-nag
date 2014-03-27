@@ -8,7 +8,7 @@ task :send_texts => :environment do
       @client = Twilio::REST::Client.new ENV["twilio_sid"], ENV["twilio_token"]
       @client.account.messages.create(
          :from => ENV["TWILIO_NUMBER"],
-         :to => @user.phone,
+         :to => ("+1" + @user.phone),
         :body => "YOU SHOULD CHECK YOUR CHECK LIST..AND CALL YOUR MOTHER."
       )
     end
