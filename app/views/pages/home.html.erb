@@ -1,8 +1,5 @@
-
-    <div>
-      <img class ="logo" src="/assets/largelogo.png" style=" max-width: 350px; display:block; margin: 0 auto;margin-top: 100px;">
-    <div>
-      <p class = "center" > 
+    <div id="topbannertimes">
+      <div id="innerbanner">
         <%= link_to "SIGN UP", :new_user %> | 
         <% link_text = session[:try_again] ? "SIGN IN (try again)" : "SIGN IN" %>
         <% if session[:user_id] %>
@@ -10,7 +7,11 @@
         <% else %>
           <%= link_to link_text, :new_login %>
         <% end %>
-      </p>
-      <p><em>For testing, the <strong>session[:user_id] == <%= session[:user_id] || "NONE" %> </strong></em>
-      </p>
+        </div>
     </div>
+
+
+
+    <div>
+      <img class ="logo" src="/assets/largelogo.png" style=" max-width: 350px; display:block; margin: 0 auto;margin-top: 150px;">
+    
