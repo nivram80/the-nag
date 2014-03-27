@@ -12,10 +12,6 @@ task :send_texts => :environment do
         :body => "YOU SHOULD CHECK YOUR CHECK LIST..AND CALL YOUR MOTHER."
       )
     end
-    
-  else
-    
-  end
       
   end
   
