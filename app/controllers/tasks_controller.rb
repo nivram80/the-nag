@@ -1,35 +1,33 @@
 class TasksController < ApplicationController
   # before_filter :authorize, :only => [:new, :edit, :create, :update]
   
-  # def toggle(attribute)
-  #   self[attribute] = !send("#{attribute}?")
-  #   self
-  # end
-  
-  def index
-    @task = Task.all
-    redirect_to(:dashboard)
+  def create
+    @tasks = Task.new(params[:task])
+    
+    if @tasks.save
+      redirect_to(:dashboard)
+    end
   end
   
-  # def show
-  #   @article = Article.find(params[:id])
-  # end    
-  
   def edit
-    @task = Task.find(params[:id])
+    @tasks = Task.find(params[:id])
   end
   
   def update
     @task = Task.find(params[:id])
-    @task.update_attributes({:done => params[:done]})
+    if @task.done
+      @task.update_attributes({:done => false})
+    else
+      @task.update_attributes({:done => true})
+    end
     redirect_to(:dashboard)
   end
     
   def new
-    @task = Task.new
-  end
-  
-  def create
+    @tasks = Task.find(params[:id])
+    @tasks.update_attributes(params[:task])
+    redirect_to(:dashboard)    
+
     @task = Task.new(params[:task])
     if @task.save 
       redirect_to(:dashboard)
@@ -52,4 +50,5 @@ class TasksController < ApplicationController
     Task.find(params[:id]).destroy
     redirect_to(:dashboard)
   end
+
 end
