@@ -1,0 +1,36 @@
+
+<div style="margin-top: 100px;">
+   <div id="form">
+     <img class ="crown" src="/assets/crown.png">
+     <h2 class="titlething">Update Group</h2>
+     <div id="insideform">
+     <div id="formbackground">
+   
+         <p class="showtitle"><%= @group.name %></p>
+       
+     	   <% @tasks.each do |task|%>
+             <%= form_for task, :url => edit_group_path do |f| %>
+             <div class="clearfix">
+       	   		<p class ="listtext" style="display: inline;text-align:left;"><%= task.desc %></p>
+               <p style="float: right;margin-top: -10px;">
+                 <%= f.hidden_field :group_id, :value => @group.id %>
+                 <%= f.submit "X" , :class => "submittimes2"%>
+               </p>
+             </div>
+             <% end %>
+     	   <%end%>
+         <%= form_for @task, :url => new_task_for_group_path do |f| %>
+         <%= f.text_field :desc , :class => "creategrouptasks",:placeholder => "ADD TASK"%>
+         <%= f.hidden_field :group_id, :value => @group.id %>
+         <%= f.hidden_field :id, :value => @group.id %>
+         <%= f.hidden_field :done, :value => false %>
+         <%= f.submit "Add", :class => "submittimes"%>
+         <% end %>
+       <a href="/dashboard">
+       <button class="buttontimes" type="button">FINISH</button>
+       </a>
+    
+     </div>
+     </div>
+   </div>
+</div>
