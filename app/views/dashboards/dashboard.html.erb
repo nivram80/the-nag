@@ -1,11 +1,13 @@
-<h1>Dashboard</h1>
 <div class="lt_col left">
+	<h2>Add an Event</h2>
+
 	<%= form_for @event do |f| %>
 		<% if @event.errors.any? %>
 		  <% @event.errors.full_messages.each do |error_msg| %>
 		    <p><%= error_msg %></p>
 		  <% end %>
 		<% end %>
+
 		<p>
 			<%= f.label "Event Name: " %>
 			<%= f.text_field :name %>
@@ -17,20 +19,30 @@
 			</div>
 			<%= f.hidden_field :user_id, :value => session[:user_id] %>
 		</p>
+
 		<p>
 			<%= f.submit "Add" %>
 		</p>
+
 	<% end %>
+
+	<h2>Available Groups</h2>
+	<div class="group_list">
+		<% @groups.each do |group| %>
+			<div class="group_list_item left"><%= link_to "Add to event", update_group_path(group.id, @selected_event), :method => :put %></div>
+			<div class="group_name left"><%= group.name %></div>
+			<div class="edit_group"><%= link_to "Edit", edit_group_path(group.id) %></div>
+		<% end %>
+	</div>
+
 </div>
 
 <div class="rt_col left">
 
-	<%= form_for "sel_event", url: :dashboard, method: :get do |e| %>
+	<%= form_for "Switch Event", url: :dashboard, method: :get do |e| %>
 		<p>
-			<%= e.label "Switch event:" %>
-			<%#= e.select "Switch event:", [["Dad", "Fred"], ["Mom", "Wilma"]] %>
 			<%= collection_select(:event, :id, Event.where("user_id = ?", session[:user_id]), :id, :name) %>
-			<%= e.submit %>
+			<%= e.submit "Switch Event" %>
 		</p>
 	<% end %>
 
@@ -43,17 +55,15 @@
 			<% @selected_event.groups.each do |group| %>
 				<h3 class="group"><%= group.name %></h3>
 					
-					<ul>
 						<% ordered_tasks = group.tasks.order("created_at DESC") %>
 						<% ordered_tasks.each do |task| %>
-							<li class="task">
+							<div class="list">
 									<div class="left checkbox">
 										<%= link_to "Done", task_path(task.id), :method => :put, :class => (task.done ? 'done' : 'not_done') %></div>
 									<div class="left desc"><%= task.desc %></div>
 									<div class="left"><%= link_to "Delete", task_path(task.id), :method => :delete, :class => "delete" %></div>
-							</li>
+							</div>
 						<% end %> <!-- End of @tasks loop -->
-					</ul>
 
 					<%= form_for @task do |t| %>
 						<p><%= t.text_field :desc, :value => "Add Task"	%></p>
@@ -67,5 +77,6 @@
 	<% else %>
 
 		<p>No Events!  Nobody is this organized!</p>
+
 	<% end %>
 </div>

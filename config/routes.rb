@@ -3,12 +3,13 @@ TheNag::Application.routes.draw do
   resources :tasks
 
   get "dashboard" => "dashboards#dashboard", :as => :dashboard
+  put "dashboard/:id/:event_id" => "dashboards#update", :as => :update_group
 
   root :to => 'pages#home'
   
   resources :groups
   
-  get "groups/edit" => "groups#edit", :as => :edit_group
+  #get "groups/edit" => "groups#edit", :as => :edit_group
   
   get "groups/newgrouptask" => "groups#newgrouptask", :as => :new_task
   
