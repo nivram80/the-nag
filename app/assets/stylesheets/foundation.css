@@ -4667,6 +4667,7 @@ select {
   background-position: 97% center;
   border: 1px solid #cccccc;
   padding: 0.5rem;
+  height: 74px !important;
   font-size: 0.875rem;
   -webkit-border-radius: 0;
   border-radius: 0; }
