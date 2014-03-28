@@ -18,7 +18,13 @@ class DashboardsController < ApplicationController
 	def update
 		@group = Group.find(params[:id])
 		@group.update_attribute(:event_id, params[:event_id])
-		
-		redirect_to :dashboard
+    
+    @selected_event = Event.find(params[:event_id])
+    @event = Event.new
+    
+    @groups = Group.order("created_at DESC")
+    @task = Task.new
+    
+    render "dashboard"
 	end
 end
