@@ -361,7 +361,28 @@ input[type="submit"]:hover{
 	color: gray;
 }
 
-button {
+.buttonadd {
+	padding:25px; 
+	background: #8ec63f;
+	transition-property: background;
+	transition-duration: 1s;
+	transition-timing-function: linear;
+	border:0 none;
+	cursor:pointer;
+	color: white;
+  text-align:center;
+  font-size: 20px;
+  width:100%;
+}
+
+.buttonadd :hover{
+   background: white;
+	 color: gray;
+}
+
+
+
+.button {
 	padding:25px ; 
 	background: #8ec63f;
 	  transition-property: background;
@@ -377,7 +398,7 @@ button {
   font-size: 40px;
 }
 
-button :hover{
+.button :hover{
    background: white;
 	color: white;
 }

@@ -23,21 +23,22 @@ h1 {
 }
 
 #account_error {
-  font-style: italic;
-  color: red;
-  background-color: lightgrey;
-  padding: 1px 0;
-  margin: 0 auto 0 45px;
-  width: 30%;
-  font-size: 15px;
-  text-align: center;
-  font-family: sans-serif;
+font-style: italic;
+color: black;
+background-color: lightgrey;
+padding-top: 36px;
+padding-bottom: 10px;
+width: 100%;
+font-size: 36px;
+text-align: center;
+font-family: sans-serif;
+margin-bottom: 20px;
+text-transform: uppercase;
 }
 
 .field_with_errors .placeholder {
-  background: #FFBBC7;
-/*  color: white;
-*/}
+  background: #2274D0;
+ }
 
 #account_info {
   margin: 0 auto 0 45px;
@@ -57,7 +58,16 @@ h1 {
 }
 
 .placeholder {
-  text-align: center;
+  width: 100%;
+  padding: 20px;
+  text-align:center;
+  font-size: 20px;
+   max-width:305px;
+   margin-bottom: 18px;
+   display:block;
+   margin: 0 auto;
+   margin-bottom: 20px;
+   border: none;
 }
 
 #button_bar_div {
@@ -96,6 +106,11 @@ h1 {
   width: 49%;
 }
 
+#su-button {
+  background: #6A90EC;
+  width: 100%;
+}
+
 input[type=submit].login_button {
   text-decoration: none;
   background-color: transparent;
@@ -117,5 +132,10 @@ input[type=submit].save_button {
 .delete_button {
   color: white;
   text-decoration: none;
-  
 }
+
+.signup_button {
+  color: white;
+  text-decoration: none;
+}
+

@@ -1,5 +1,6 @@
     <div id="topbannertimes">
       <div id="innerbanner">
+
       <% if !current_user %>
         <%= link_to "SIGN UP", :new_user %> | 
         <% link_text = session[:try_again] ? "SIGN IN (try again)" : "SIGN IN" %>
@@ -21,3 +22,6 @@
         <p class="center notice"><%= flash[:notice] %></p>
       <% end %>
     
+
+    </div>
+

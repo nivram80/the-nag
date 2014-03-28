@@ -22,4 +22,17 @@
   
       <%= submit_tag "Log In" %>
     <% end %>
+    
+    <% if flash[:notice] %>
+      <div style="color:white;">
+        <p class="center notice"><%= flash[:notice] %></p>
+        <p class="center notice">- OR -</p>
+        <div class="buttonadd">
+          <%= link_to "SIGN UP", :new_user %>
+        </div>
+      </div>
+    <% end %>
   </div>
+
+</div>
+

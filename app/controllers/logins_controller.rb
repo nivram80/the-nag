@@ -11,7 +11,7 @@ class LoginsController < ApplicationController
     else
       #raise "Login Failed."
       flash[:notice] = "Login failed, please try again."
-      redirect_to :root
+      redirect_to :new_login
     end
     #binding.pry
   end

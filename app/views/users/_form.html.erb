@@ -1,3 +1,4 @@
+  
   <% if @user.errors.any? %>
     <div id="account_error">
       <% @user.errors.full_messages.each do |err| %>
@@ -6,34 +7,35 @@
     </div>  
   <% end %>
 
+<%= form_for @user do |f| %>
   <!-- :fname, :lname, :email, :phone, :password, :password_confirmation -->
 
   <div id="newform">
     <%= form_for @user do |f| %>
       <p>
-        <%= f.text_field :fname, :placeholder => "FIRST NAME",:class => "newuserinput" %>
+        <%= f.text_field :fname, :placeholder => "FIRST NAME",:class => "newuserinput",:class => "placeholder"%>
       </p>
   
       <p>
 
-        <%= f.text_field :lname, :placeholder => "LAST NAME",:class => "newuserinput"  %>
+        <%= f.text_field :lname, :placeholder => "LAST NAME",:class => "newuserinput",:class => "placeholder"  %>
       </p>
   
       <p>
 
-        <%= f.text_field :email, :placeholder => "EMAIL",:class => "newuserinput" %>
+        <%= f.text_field :email, :placeholder => "EMAIL",:class => "newuserinput",:class => "placeholder" %>
       </p>
   
       <p>
-        <%= f.text_field :phone, :placeholder => "PHONE NUMBER",:class => "newuserinput" %>
+        <%= f.text_field :phone, :placeholder => "PHONE NUMBER",:class => "newuserinput",:class => "placeholder" %>
       </p>
   
       <p>
-        <%= f.password_field :password, :placeholder => "PASSWORD",:class => "newuserinput" %>
+        <%= f.password_field :password, :placeholder => "PASSWORD",:class => "newuserinput",:class => "placeholder" %>
       </p>
   
       <p>
-        <%= f.password_field :password_confirmation, :placeholder => "CONFIRM PASSWORD",:class => "newuserinput" %>
+        <%= f.password_field :password_confirmation, :placeholder => "CONFIRM PASSWORD",:class => "newuserinput",:class => "placeholder" %>
       </p>
 
   
@@ -43,6 +45,4 @@
 
 
  </div>
-
-</div>  
 
