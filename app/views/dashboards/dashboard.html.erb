@@ -29,6 +29,8 @@
 
 	<h2>Available Groups</h2>
 
+	<%= link_to "Create a Group", :new_group %>
+
 	<div class="group_list">
 	<% if @groups %>
 		<% @groups.each do |group| %>
