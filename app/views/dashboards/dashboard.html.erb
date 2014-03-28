@@ -1,71 +1,102 @@
+<div id="topbannertimes">
+  </div>
 <h1>Dashboard</h1>
-<div class="lt_col left">
-	<%= form_for @event do |f| %>
-		<% if @event.errors.any? %>
-		  <% @event.errors.full_messages.each do |error_msg| %>
-		    <p><%= error_msg %></p>
-		  <% end %>
-		<% end %>
-		<p>
-			<%= f.label "Event Name: " %>
-			<%= f.text_field :name %>
-			<div>
-				<%= f.label "Due: ", :class => "left" %>
-				<%= f.date_select :due, start_year: Time.now.year, 
-																use_short_month: true, 
-																order: [:month, :day, :year] %>
-			</div>
-			<%= f.hidden_field :user_id, :value => session[:user_id] %>
-		</p>
-		<p>
-			<%= f.submit "Add" %>
-		</p>
-	<% end %>
-</div>
 
-<div class="rt_col left">
 
-	<%= form_for "sel_event", url: :dashboard, method: :get do |e| %>
-		<p>
-			<%= e.label "Switch event:" %>
-			<%#= e.select "Switch event:", [["Dad", "Fred"], ["Mom", "Wilma"]] %>
-			<%= collection_select(:event, :id, Event.where("user_id = ?", session[:user_id]), :id, :name) %>
-			<%= e.submit %>
-		</p>
-	<% end %>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="row">
+      <div id="black" class="small-4 large-4 columns">...</div>
+      <div id="dtitle" class="small-4 large-4 columns" style="text-align:center;">MAKE EVENT</div>
+      <div id="black" class="small-4 large-4 columns">...</div>
+    </div>
+    
+    	<%= form_for @event do |f| %>
+    		<% if @event.errors.any? %>
+    		  <% @event.errors.full_messages.each do |error_msg| %>
+    		    <p><%= error_msg %></p>
+    		  <% end %>
+    		<% end %>
+    		<p>
+    			<%= f.text_field :name, :placeholder => "EVENT NAME",:class => "inputtimes5" %>
+          
+          <div class="row" style="margin-bottom:20px;">
+            <div id="black" class="small-4 large-4 columns">...</div>
+            <div id="dtitle" class="small-4 large-4 columns" style="text-align:center;">DUE DATE</div>
+            <div id="black" class="small-4 large-4 columns">...</div>
+          </div>
+    			<div>
+    				
+    				<%= f.date_select :due, start_year: Time.now.year, 
+    																use_short_month: true, 
+    																order: [:month, :day, :year] %>
+    			</div>
+    			<%= f.hidden_field :user_id, :value => session[:user_id] %>
+    		</p>
+    		<p>
+    			<%= f.submit "Add" %>
+    		</p>
+    	<% end %>
+    
+    
+    
+  </div>
+  <div class="large-6 columns">
 
-	<% if @selected_event %>
-		<%# @events.each do |event| %>
-			<h2><%= @selected_event.name %></h2>
-			<p><%= @selected_event.due.strftime("%m/%d/%y") %></p>
-			<p><%= link_to "Delete Event", event_path(@selected_event.id), :method => :delete %></p>
+    	<%= form_for "sel_event", url: :dashboard, method: :get do |e| %>
+    		<p>
+    			<%= e.label "Switch event:" %>
+    			<%#= e.select "Switch event:", [["Dad", "Fred"], ["Mom", "Wilma"]] %>
+    			<%= collection_select(:event, :id, Event.where("user_id = ?", session[:user_id]), :id, :name) %>
+    			<%= e.submit %>
+    		</p>
+    	<% end %>
 
-			<% @selected_event.groups.each do |group| %>
-				<h3 class="group"><%= group.name %></h3>
+    	<% if @selected_event %>
+    		<%# @events.each do |event| %>
+    			<h2><%= @selected_event.name %></h2>
+    			<p><%= @selected_event.due.strftime("%m/%d/%y") %></p>
+    			<p><%= link_to "Delete Event", event_path(@selected_event.id), :method => :delete %></p>
+
+    			<% @selected_event.groups.each do |group| %>
+    				<h3 class="group"><%= group.name %></h3>
 					
-					<ul>
-						<% ordered_tasks = group.tasks.order("created_at DESC") %>
-						<% ordered_tasks.each do |task| %>
-							<li class="task">
-									<div class="left checkbox">
-										<%= link_to "Done", task_path(task.id), :method => :put, :class => (task.done ? 'done' : 'not_done') %></div>
-									<div class="left desc"><%= task.desc %></div>
-									<div class="left"><%= link_to "Delete", task_path(task.id), :method => :delete, :class => "delete" %></div>
-							</li>
-						<% end %> <!-- End of @tasks loop -->
-					</ul>
+    					<ul>
+    						<% ordered_tasks = group.tasks.order("created_at DESC") %>
+    						<% ordered_tasks.each do |task| %>
+    							<li class="task">
+    									<div class="left checkbox">
+    										<%= link_to "Done", task_path(task.id), :method => :put, :class => (task.done ? 'done' : 'not_done') %></div>
+    									<div class="left desc"><%= task.desc %></div>
+    									<div class="left"><%= link_to "Delete", task_path(task.id), :method => :delete, :class => "delete" %></div>
+    							</li>
+    						<% end %> <!-- End of @tasks loop -->
+    					</ul>
 
-					<%= form_for @task do |t| %>
-						<p><%= t.text_field :desc, :value => "Add Task"	%></p>
-							 <%= t.hidden_field :done, :value => false %>
-							 <%= t.hidden_field :group_id, :value => group.id %>
-							 <%= t.submit %>
-					<% end %>
+    					<%= form_for @task do |t| %>
+    						<p><%= t.text_field :desc, :value => "Add Task"	%></p>
+    							 <%= t.hidden_field :done, :value => false %>
+    							 <%= t.hidden_field :group_id, :value => group.id %>
+    							 <%= t.submit %>
+    					<% end %>
 
-			<% end %> <!-- End of @groups loop -->
+    			<% end %> <!-- End of @groups loop -->
 
-	<% else %>
+    	<% else %>
 
-		<p>No Events!  Nobody is this organized!</p>
-	<% end %>
+    		<p>No Events!  Nobody is this organized!</p>
+    	<% end %>
+    
+    
+    
+  </div>
 </div>
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
     <div id="topbannertimes">
       <div id="innerbanner">
+      <% if !current_user %>
         <%= link_to "SIGN UP", :new_user %> | 
         <% link_text = session[:try_again] ? "SIGN IN (try again)" : "SIGN IN" %>
         <% if session[:user_id] %>
@@ -7,11 +8,12 @@
         <% else %>
           <%= link_to link_text, :new_login %>
         <% end %>
+      <% end %>
         </div>
     </div>
 
 
 
     <div>
-      <img class ="logo" src="/assets/largelogo.png" style=" max-width: 350px; display:block; margin: 0 auto;margin-top: 150px;">
+      <img class ="logo animated fadeInDown" src="/assets/largelogo.png" style=" max-width: 350px; display:block; margin: 0 auto;margin-top: 150px;">
     

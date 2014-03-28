@@ -7,36 +7,36 @@
   <% end %>
   
   <!-- :fname, :lname, :email, :phone, :password, :password_confirmation -->
-  <p>
-    <%= f.label :fname, "First Name" %>
-    <%= f.text_field :fname, :placeholder => "First Name" %>
-  </p>
+  <div id="newform">
+    
+      <p>
+        <%= f.text_field :fname, :placeholder => "FIRST NAME",:class => "newuserinput" %>
+      </p>
   
-  <p>
-    <%= f.label :lname%>
-    <%= f.text_field :lname, :placeholder => "Last Name"  %>
-  </p>
+      <p>
+
+        <%= f.text_field :lname, :placeholder => "LAST NAME",:class => "newuserinput"  %>
+      </p>
   
-  <p>
-    <%= f.label :email %>
-    <%= f.text_field :email, :placeholder => "Email Address" %>
-  </p>
+      <p>
+
+        <%= f.text_field :email, :placeholder => "EMAIL",:class => "newuserinput" %>
+      </p>
   
-  <p>
-    <%= f.label :phone, "Phone Number" %>
-    <%= f.text_field :phone, :placeholder => "9999999999" %>
-  </p>
+      <p>
+        <%= f.text_field :phone, :placeholder => "PHONE NUMBER",:class => "newuserinput" %>
+      </p>
   
-  <p>
-    <%= f.label :password %>
-    <%= f.password_field :password, :placeholder => "****" %>
-  </p>
+      <p>
+        <%= f.password_field :password, :placeholder => "PASSWORD",:class => "newuserinput" %>
+      </p>
   
-  <p>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, :placeholder => "****" %>
-  </p>
+      <p>
+        <%= f.password_field :password_confirmation, :placeholder => "CONFIRM PASSWORD",:class => "newuserinput" %>
+      </p>
   
-  <%= f.submit "SAVE"%>
-  
+      <%= f.submit "SAVE",:class => "newuserinput"%>
+
 <% end %>
+
+ </div>
