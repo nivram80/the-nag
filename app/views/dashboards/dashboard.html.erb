@@ -26,33 +26,49 @@
             <div id="dtitle" class="large-6 columns" style="text-align:center;">DUE DATE</div>
             <div id="black" class="large-3 columns">...</div>
           </div>
-    			<div>
-    				<%= f.text_field :due, :class => "datepicker" %>
+
+            <div class="row">
+              <div class="small-8 large-8 columns">
+                <%= f.text_field :due, :class => "datepicker" %>
+                <%= f.hidden_field :user_id, :value => session[:user_id] %>
+              </div>
+              <div class="small-4 large-4 columns">
+                <div style="position:relative; top: 20px;">
+                <%= f.submit "Add" %>
+                </div>
+              </div>
+            </div>
+            
+            
+    				
     				<%#= f.date_select :due, start_year: Time.now.year, 
 											 use_short_month: true, 
 											 order: [:month, :day, :year] %>
-    			</div>
-    			<%= f.hidden_field :user_id, :value => session[:user_id] %>
+
+    			
     		</p>
     		<p>
-    			<%= f.submit "Add" %>
+    			
     		</p>
     	<% end %>
       
-      <div class="row" style="margin-bottom:20px;">
+      <div class="row" style="margin-bottom:50px;">
         <div id="black" class="small-3 large-3 columns">...</div>
         <div id="dtitle" class="small-6 large-6 columns" style="text-align:center;">GROUPS</div>
         <div id="black" class="small-3 large-3 columns">...</div>
       </div>
       
+      <div class="row" style="width: 200px; display:block; margin: 0 auto;">
+        <%= link_to "Create a Group", :new_group, :class => "makegroupbutton" %>
+      </div>
     
-      <div class="group_list">
+      <div class="group_list" style="margin-top:60px">
           <% @groups.each do |group| %>
               <div class="row">
                  <div class="small-8 large-8 columns" id ="coolfont" ><%= group.name %></div>
                 <div class="small-2 large-2 columns">
                   <% if @selected_event %>
-                    <%= link_to "Add to event", update_group_path(group.id, @selected_event), :method => :put %>
+                    <%= link_to "ADD", update_group_path(group.id, @selected_event), :method => :put, :class => "left" %>
                   <% end %>
                 </div>
                 <div class="small-2 large-2 columns"><%= link_to "Edit", edit_group_path(group.id), :class => "left" %></div>
@@ -93,29 +109,52 @@
     			<p id="coolfont" class="center"><%= @selected_event.due.strftime("%m/%d/%y") %></p>
           
           
-    			<p><%= link_to "Delete Event", event_path(@selected_event.id), :method => :delete %></p>
+    			<p style="text-align:center;"><%= link_to "Delete Event", event_path(@selected_event.id), :method => :delete %></p>
+          
+        </div>
 
     			<% @selected_event.groups.each do |group| %>
           
-    				<h3 class="group"><%= group.name %></h3>
-					
+    				<h3 class="group" style="margin-top:20px;"><%= group.name %></h3>
+					  <hr>
     					<ul>
     						<% ordered_tasks = group.tasks.order("created_at DESC") %>
     						<% ordered_tasks.each do |task| %>
     							<li class="task">
-    									<div class="left checkbox">
-    										<%= link_to "Done", task_path(task.id), :method => :put, :class => (task.done ? 'done' : 'not_done') %></div>
-    									<div class="left desc"><%= task.desc %></div>
-    									<div class="left"><%= link_to "Delete", task_path(task.id), :method => :delete, :class => "delete" %></div>
+                      <div class="row">
+                        <div class="small-2 large-2 columns">
+        									<div class="left checkbox">
+        										<%= link_to "Done", task_path(task.id), :method => :put, :class => (task.done ? 'done' : 'not_done') %>
+                          </div>
+                        </div>
+                        <div class="small-6 large-6 columns">
+                          <div class="left desc"><%= task.desc %></div>
+                        </div>
+                        <div class="small-2 large-2 columns">
+                          <div class="left"><%= link_to "Delete", task_path(task.id), :method => :delete, :class => "delete" %></div>
+                        </div>
+                      </div>
+    									
+    									
+    									
     							</li>
     						<% end %> <!-- End of @tasks loop -->
     					</ul>
 
-    					<%= form_for @task do |t| %>
-    						<p><%= t.text_field :desc, :value => "Add Task"	%></p>
-    							 <%= t.hidden_field :done, :value => false %>
-    							 <%= t.hidden_field :group_id, :value => group.id %>
-    							 <%= t.submit %>
+              <div class="row">
+                <%= form_for @task do |t| %>
+                <div class="small-8 large-8 columns">
+      						<p><%= t.text_field :desc, :value => "Add Task",:class => "inputtimes6"	%></p>
+      							 <%= t.hidden_field :done, :value => false %>
+      							 <%= t.hidden_field :group_id, :value => group.id %>
+                </div>
+                <div class="small-4 large-4 columns">
+                   <%= t.submit "ADD", :class => 'submit_class_name_here'%>
+                </div>
+              </div>
+    					
+    						
+    							
     					<% end %>
 
     			<% end %> <!-- End of @groups loop -->
@@ -127,7 +166,7 @@
     
     
     
-  </div>
+ 
 
 
 
