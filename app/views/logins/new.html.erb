@@ -20,9 +20,21 @@
     <div id="l-button" class="info_box">
       <%= submit_tag "Log In", :class => "login_button"  %>
     </div>
+    
+    <% if flash[:notice] %>
+      <div>
+        <p class="center notice"><%= flash[:notice] %></p>
+        <p class="center notice">- Or Create New Account -</p>
+        <div id="su-button" class="info_box">
+          <%= link_to "SIGN UP", :new_user, :class => "signup_button" %>
+        </div>
+      </div>
+    <% end %>
   
   </div>
   
 <% end %>
 
 </div>
+
+

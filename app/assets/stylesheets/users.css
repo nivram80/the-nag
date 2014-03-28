@@ -96,6 +96,11 @@ h1 {
   width: 49%;
 }
 
+#su-button {
+  background: #6A90EC;
+  width: 100%;
+}
+
 input[type=submit].login_button {
   text-decoration: none;
   background-color: transparent;
@@ -117,5 +122,10 @@ input[type=submit].save_button {
 .delete_button {
   color: white;
   text-decoration: none;
-  
 }
+
+.signup_button {
+  color: white;
+  text-decoration: none;
+}
+
