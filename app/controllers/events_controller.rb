@@ -12,7 +12,6 @@ class EventsController < ApplicationController
 
 	def create
 		@event = Event.new(params[:event])
-		binding.pry
 		@events = Event.order("due")
 		if @event.save
 			redirect_to(:dashboard)
