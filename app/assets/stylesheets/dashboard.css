@@ -60,6 +60,8 @@
   height: 0;
   padding-top: 40px;
   overflow: hidden;
+  position: relative;
+  top: 36px;
 }
 .not_done {
   background-position: 0px 7px;
