@@ -29,8 +29,8 @@
     			<div>
     				<%= f.text_field :due, :class => "datepicker" %>
     				<%#= f.date_select :due, start_year: Time.now.year, 
-    																use_short_month: true, 
-    																order: [:month, :day, :year] %>
+											 use_short_month: true, 
+											 order: [:month, :day, :year] %>
     			</div>
     			<%= f.hidden_field :user_id, :value => session[:user_id] %>
     		</p>
@@ -38,7 +38,14 @@
     			<%= f.submit "Add" %>
     		</p>
     	<% end %>
-    
+        <h2>Available Groups</h2>
+        <div class="group_list">
+            <% @groups.each do |group| %>
+                <div class="group_list_item left"><%= link_to "Add to event", update_group_path(group.id, @selected_event), :method => :put %></div>
+                <div class="group_name left"><%= group.name %></div>
+                <div class="edit_group"><%= link_to "Edit", edit_group_path(group.id) %></div>
+            <% end %>
+        </div>
     
     
   </div>
