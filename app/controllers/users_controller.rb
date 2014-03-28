@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     # binding.pry
     @user = User.find(params[:id])
+    @user_events = Event.where(:user_id => params[:id])
   end
   
   def new
@@ -14,7 +15,6 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])    
     if @user.save
       session[:user_id] = @user.id  # Auto login to session on new user creation
-      session[:try_again] = false
       redirect_to(:dashboard)
     else
       render "new"

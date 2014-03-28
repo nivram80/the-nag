@@ -1,12 +1,13 @@
-<%= form_for @user do |f| %>
-
   <% if @user.errors.any? %>
-    <% @user.errors.full_messages.each do |err| %>
-      <p><%= err %></p>
-    <% end %>    
+    <div id="account_error">
+      <% @user.errors.full_messages.each do |err| %>
+        <p><%= err %></p>
+      <% end %>    
+    </div>  
   <% end %>
-  
+
   <!-- :fname, :lname, :email, :phone, :password, :password_confirmation -->
+<<<<<<< HEAD
   <div id="newform">
     
       <p>
@@ -34,9 +35,56 @@
       <p>
         <%= f.password_field :password_confirmation, :placeholder => "CONFIRM PASSWORD",:class => "newuserinput" %>
       </p>
+=======
+<div id="account_info">
+  
+<%= form_for @user do |f| %>
+
+  <div id="user_info_list">
+
+    <div class="info_box">
+      <%= f.label :fname, "First Name" %><br>
+      <%= f.text_field :fname, :placeholder => "First Name", :class => "placeholder" %>
+    </div>
+  
+    <div class="info_box">
+      <%= f.label :lname, "Last Name"%><br>
+      <%= f.text_field :lname, :placeholder => "Last Name", :class => "placeholder"  %>
+    </div>
+  
+    <div class="info_box">
+      <%= f.label :email %><br>
+      <%= f.text_field :email, :placeholder => "Email Address", :class => "placeholder" %>
+    </div>
+  
+    <div class="info_box">
+      <%= f.label :phone, "Phone Number" %><br>
+      <%= f.text_field :phone, :placeholder => "9999999999", :class => "placeholder" %>
+    </div>
+  
+    <div class="info_box">
+      <%= f.label :password %><br>
+      <%= f.password_field :password, :placeholder => "****", :class => "placeholder" %>
+    </div>
+  
+    <div class="info_box">
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation, :placeholder => "****", :class => "placeholder" %>
+    </div>
+  
+    <div id="s-button" class="info_box">
+      <%= f.submit "SAVE", :class => "save_button" %>
+    </div>
+    
+  </div>
+>>>>>>> 76fee5175c735ea89566855edb62710667909c59
   
       <%= f.submit "SAVE",:class => "newuserinput"%>
 
 <% end %>
 
+<<<<<<< HEAD
  </div>
+=======
+</div>  
+>>>>>>> 76fee5175c735ea89566855edb62710667909c59

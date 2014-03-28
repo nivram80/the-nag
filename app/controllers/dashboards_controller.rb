@@ -8,8 +8,17 @@ class DashboardsController < ApplicationController
 		end
 
 		@event = Event.new
-		#@groups = Group.event.where("event.id = ?", session[:user_id])
+
+		@groups = Group.order("created_at DESC")
 
 		@task = Task.new
+		
+	end
+
+	def update
+		@group = Group.find(params[:id])
+		@group.update_attribute(:event_id, params[:event_id])
+		
+		redirect_to :dashboard
 	end
 end

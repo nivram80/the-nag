@@ -1,19 +1,32 @@
     <div id="topbannertimes">
       <div id="innerbanner">
+<<<<<<< HEAD
       <% if !current_user %>
+=======
+
+>>>>>>> 76fee5175c735ea89566855edb62710667909c59
         <%= link_to "SIGN UP", :new_user %> | 
-        <% link_text = session[:try_again] ? "SIGN IN (try again)" : "SIGN IN" %>
         <% if session[:user_id] %>
           <%= link_to "Dashboard", :dashboard %>
         <% else %>
-          <%= link_to link_text, :new_login %>
+          <%= link_to "LOG IN", :new_login %>
         <% end %>
       <% end %>
         </div>
     </div>
 
+    <div>
+      <% if flash[:notice] %>
+        <p class="center notice"><%= flash[:notice] %></p>
+      <% end %>
+    </div>
 
 
     <div>
+<<<<<<< HEAD
       <img class ="logo animated fadeInDown" src="/assets/largelogo.png" style=" max-width: 350px; display:block; margin: 0 auto;margin-top: 150px;">
     
+=======
+      <img class ="logo" src="/assets/largelogo.png" style=" max-width: 350px; display:block; margin: 0 auto;margin-top: 150px;">
+    </div>
+>>>>>>> 76fee5175c735ea89566855edb62710667909c59
