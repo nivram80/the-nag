@@ -1,42 +1,54 @@
+  <% if @user.errors.any? %>
+    <div id="account_error">
+      <% @user.errors.full_messages.each do |err| %>
+        <p><%= err %></p>
+      <% end %>    
+    </div>  
+  <% end %>
+
+  <!-- :fname, :lname, :email, :phone, :password, :password_confirmation -->
+<div id="account_info">
+  
 <%= form_for @user do |f| %>
 
-  <% if @user.errors.any? %>
-    <% @user.errors.full_messages.each do |err| %>
-      <p><%= err %></p>
-    <% end %>    
-  <% end %>
+  <div id="user_info_list">
+
+    <div class="info_box">
+      <%= f.label :fname, "First Name" %><br>
+      <%= f.text_field :fname, :placeholder => "First Name", :class => "placeholder" %>
+    </div>
   
-  <!-- :fname, :lname, :email, :phone, :password, :password_confirmation -->
-  <p>
-    <%= f.label :fname, "First Name" %>
-    <%= f.text_field :fname, :placeholder => "First Name" %>
-  </p>
+    <div class="info_box">
+      <%= f.label :lname, "Last Name"%><br>
+      <%= f.text_field :lname, :placeholder => "Last Name", :class => "placeholder"  %>
+    </div>
   
-  <p>
-    <%= f.label :lname%>
-    <%= f.text_field :lname, :placeholder => "Last Name"  %>
-  </p>
+    <div class="info_box">
+      <%= f.label :email %><br>
+      <%= f.text_field :email, :placeholder => "Email Address", :class => "placeholder" %>
+    </div>
   
-  <p>
-    <%= f.label :email %>
-    <%= f.text_field :email, :placeholder => "Email Address" %>
-  </p>
+    <div class="info_box">
+      <%= f.label :phone, "Phone Number" %><br>
+      <%= f.text_field :phone, :placeholder => "9999999999", :class => "placeholder" %>
+    </div>
   
-  <p>
-    <%= f.label :phone, "Phone Number" %>
-    <%= f.text_field :phone, :placeholder => "9999999999" %>
-  </p>
+    <div class="info_box">
+      <%= f.label :password %><br>
+      <%= f.password_field :password, :placeholder => "****", :class => "placeholder" %>
+    </div>
   
-  <p>
-    <%= f.label :password %>
-    <%= f.password_field :password, :placeholder => "****" %>
-  </p>
+    <div class="info_box">
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation, :placeholder => "****", :class => "placeholder" %>
+    </div>
   
-  <p>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, :placeholder => "****" %>
-  </p>
-  
-  <%= f.submit "SAVE"%>
+    <div id="s-button" class="info_box">
+      <%= f.submit "SAVE", :class => "save_button" %>
+    </div>
+    
+  </div>
   
 <% end %>
+
+</div>  

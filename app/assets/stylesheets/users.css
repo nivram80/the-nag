@@ -1,0 +1,109 @@
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+/*---------------------------------------*/
+header {
+  width: 200px;
+  background: url("crown.png");
+  background-repeat: no-repeat;
+  background-size:  20%;
+  background-position: 0px 10px;
+  margin: 0 auto 0 140px;}
+
+h1 {
+  font-family:'lobster_1.3regular';
+  text-align:center;
+  padding-top: 30px;
+}
+
+#account_error {
+  font-style: italic;
+  color: red;
+  background-color: lightgrey;
+  padding: 1px 0;
+  margin: 0 auto 0 45px;
+  width: 30%;
+  font-size: 15px;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.field_with_errors .placeholder {
+  background: #FFBBC7;
+/*  color: white;
+*/}
+
+#account_info {
+  margin: 0 auto 0 45px;
+  width: 30%;
+  font-size: 24px;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+#user_info_list {
+  padding-left: 0;
+}
+
+.info_box {
+  border: #A6A3A5 solid 1px;
+  margin: 5px auto;
+}
+
+.placeholder {
+  text-align: center;
+}
+
+#button_bar_div {
+  
+}
+
+#button_bar_list {
+  padding: 0;
+  margin: 5px auto;
+}
+
+#button_bar_list li {
+  border: #A6A3A5 solid 1px;
+  display: inline;
+}
+
+#s-button {
+  background: #6A90EC;
+  width: 100%;
+}
+
+#e-button {
+  background: #83D296;
+  float: left;
+  width: 47%;
+}
+
+#d-button {
+  background: #D21D2B;
+  float: right;
+  width: 49%;
+}
+
+input[type=submit].save_button {
+  text-decoration: none;
+  background-color: transparent;
+  height: 45px;
+  padding: 0;
+}
+
+.edit_button {
+  text-decoration: none;
+}
+
+.delete_button {
+  color: white;
+  text-decoration: none;
+  
+}
