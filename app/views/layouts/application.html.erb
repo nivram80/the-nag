@@ -8,10 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 
-
-
 <body id=“<%= params[:controller] %>”>
-
   
   <div class="row">
     <% if current_user %>
@@ -48,7 +45,6 @@
   
         
     
-</div>
 <%= yield %>
 
 </body>

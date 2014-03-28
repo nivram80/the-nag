@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+
 <div id="topbannertimes">
 </div>
-
-<h3>Account Information</h3>
-<div id="formbackground2">
+<img class ="crown2 animated bounce" src="/assets/crown.png">
+<h3>Account Info</h3>
+<div class ="animated fadeInDown" id="formbackground2">
   <p id ="titlestuffs" >User Name </p><p id="centertext"><%= @user.fname %> <%= @user.lname %></p>
   <p id ="titlestuffs" >Email</p> <p id="centertext"><%= @user.email %></p>
   <p id ="titlestuffs" >Phone </p> <p id="centertext"><%= number_to_phone(@user.phone, area_code: true) %></p>
@@ -11,26 +11,3 @@
   <button><%= link_to("EDIT", edit_user_path(@user.id)) %></button>
   <button><%= link_to("DELETE ACCOUNT", user_path(@user.id), :method => "delete") %></button>
 </div>
-=======
-<header><h1>Your Account</h1></header>
-
-<div id="account_info">
-  
-  <div id="user_info_list">
-    <div class="info_box"><%= @user.fname.upcase %> <%= @user.lname.upcase %></div>
-    <div class="info_box"><%= @user.email %></div >
-    <% phone = @user.phone.length > 0 ? number_to_phone(@user.phone, area_code: true) : "<no phone>" %>
-    <% #binding.pry %>
-    <div class="info_box"><%= phone %></div>
-    <div class="info_box">You have <%= @user_events.count %> saved events. </div>
-  </div>
-  
-  <div id="button_bar_div">  
-    <ul id="button_bar_list" class="clearfix">
-      <li id="e-button"><%= link_to("Edit Account", edit_user_path(@user.id), :class => "edit_button") %></li>
-      <li id="d-button"><%= link_to("Delete Account!", user_path(@user.id), :method => "delete", :class => "delete_button") %></li>
-    </ul>
-  </div>
-  
-</div>
->>>>>>> 76fee5175c735ea89566855edb62710667909c59
