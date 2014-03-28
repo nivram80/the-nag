@@ -74,6 +74,11 @@ h1 {
   display: inline;
 }
 
+#l-button {
+  background: #55CD56;
+  width: 100%;
+}
+
 #s-button {
   background: #6A90EC;
   width: 100%;
@@ -89,6 +94,13 @@ h1 {
   background: #D21D2B;
   float: right;
   width: 49%;
+}
+
+input[type=submit].login_button {
+  text-decoration: none;
+  background-color: transparent;
+  height: 45px;
+  padding: 0;
 }
 
 input[type=submit].save_button {
