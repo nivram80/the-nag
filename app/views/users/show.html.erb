@@ -1,9 +1,9 @@
 
 <div id="topbannertimes">
 </div>
-
-<h3>Account Information</h3>
-<div id="formbackground2">
+<img class ="crown2 animated bounce" src="/assets/crown.png">
+<h3>Account Info</h3>
+<div class ="animated fadeInDown" id="formbackground2">
   <p id ="titlestuffs" >User Name </p><p id="centertext"><%= @user.fname %> <%= @user.lname %></p>
   <p id ="titlestuffs" >Email</p> <p id="centertext"><%= @user.email %></p>
   <p id ="titlestuffs" >Phone </p> <p id="centertext"><%= number_to_phone(@user.phone, area_code: true) %></p>
