@@ -8,11 +8,11 @@ class DashboardsController < ApplicationController
 		end
 
 		@event = Event.new
-		
+
 		@groups = Group.order("created_at DESC")
 
 		@task = Task.new
-
+		
 	end
 
 	def update
