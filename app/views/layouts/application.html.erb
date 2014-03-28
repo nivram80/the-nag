@@ -7,18 +7,48 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
+
+
 <body id=“<%= params[:controller] %>”>
-  <% if current_user %>
-    <hr>
-    <p> Welcome to the Nag, <%= "#{current_user.fname} #{current_user.lname}" %>!</p>
-    <%= link_to("Log Out", login_path(current_user.id), :method => :delete) %>
-    <br>
-    <%= link_to("Account Info", user_path(current_user.id)) %>
-    <br>
-    <%= link_to("Dashboard", :dashboard) %>
-    <hr>
-  <% end %>
+
   
+  <div class="row">
+    <% if current_user %>
+    <div class="large-6 columns">
+        <h4 style="text-align:center;" class="show-for-small-only">The Nag</h4>
+      <h4 style="position:relative; bottom: -7px;" class="hide-for-small-only"> <%= "#{current_user.fname}" %>'s Nag</h4>
+    </div>
+    <div class="large-6 columns">
+      <div class="hide-for-small-only" id='loggednav'>
+        <%= link_to(" Log Out ", login_path(current_user.id), :method => :delete) %>
+        
+        <%= link_to(" Account ", user_path(current_user.id)) %>
+        
+        <%= link_to(" Dashboard ", :dashboard) %>
+    
+     
+    
+      </div>
+      <div class="show-for-small-only" id='loggednav2'>
+        <%= link_to(" Log Out ", login_path(current_user.id), :method => :delete) %>
+        -
+        
+        <%= link_to(" Account ", user_path(current_user.id)) %>
+        -
+        <%= link_to(" Dashboard ", :dashboard) %>
+    
+     
+    
+      </div>
+       <% end %>
+      
+    </div>
+  </div>
+  
+        
+    
+</div>
 <%= yield %>
 
 </body>

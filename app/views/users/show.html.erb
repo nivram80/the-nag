@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+<div id="topbannertimes">
+</div>
+
+<h3>Account Information</h3>
+<div id="formbackground2">
+  <p id ="titlestuffs" >User Name </p><p id="centertext"><%= @user.fname %> <%= @user.lname %></p>
+  <p id ="titlestuffs" >Email</p> <p id="centertext"><%= @user.email %></p>
+  <p id ="titlestuffs" >Phone </p> <p id="centertext"><%= number_to_phone(@user.phone, area_code: true) %></p>
+  <hr>
+  <button><%= link_to("EDIT", edit_user_path(@user.id)) %></button>
+  <button><%= link_to("DELETE ACCOUNT", user_path(@user.id), :method => "delete") %></button>
+</div>
+=======
 <header><h1>Your Account</h1></header>
 
 <div id="account_info">
@@ -19,3 +33,4 @@
   </div>
   
 </div>
+>>>>>>> 76fee5175c735ea89566855edb62710667909c59

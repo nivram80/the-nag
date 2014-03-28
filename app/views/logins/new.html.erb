@@ -1,40 +1,35 @@
-<header><h1>Nag Log In</h1></header>
 
-<div id="account_info">
+<div id="paddingtimes">
+  <img class ="crown3 animated bounce" src="/assets/crown.png">
+  <h1 class="animated fadeInDown">Log In</h1>
 
-<%# This is just a plan-ol' HTML form maker: %>
-<%= form_tag logins_path do %>
- 
-  <div id="user_info_list">
+  <%# This is just a plan-ol' HTML form maker: %>
+
+  <div class="animated fadeInDown" id="loginform">
+    <%= form_tag logins_path do %>
   
-    <div class="info_box">
-      <%= label_tag :email %>
-      <%= text_field_tag :email %>
-    </div>
+      <p style="margin-top:15px;">
+      
+        <%= text_field_tag :email, nil, :placeholder => 'EMAIL',:class => "newuserinput" %>
+      </p>
   
-    <div class="info_box">
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>
-    </div>
+      <p>
+        <%= password_field_tag :password, nil, :placeholder => 'PASSWORD',:class => "newuserinput"%>
+      </p>
   
-    <div id="l-button" class="info_box">
-      <%= submit_tag "Log In", :class => "login_button"  %>
-    </div>
+      <%= submit_tag "Log In" %>
+    <% end %>
     
     <% if flash[:notice] %>
-      <div>
+      <div style="color:white;">
         <p class="center notice"><%= flash[:notice] %></p>
-        <p class="center notice">- Or Create New Account -</p>
-        <div id="su-button" class="info_box">
-          <%= link_to "SIGN UP", :new_user, :class => "signup_button" %>
+        <p class="center notice">- OR -</p>
+        <div class="buttonadd">
+          <%= link_to "SIGN UP", :new_user %>
         </div>
       </div>
     <% end %>
-  
   </div>
-  
-<% end %>
 
 </div>
-
 

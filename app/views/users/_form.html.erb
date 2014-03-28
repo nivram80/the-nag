@@ -1,3 +1,4 @@
+  
   <% if @user.errors.any? %>
     <div id="account_error">
       <% @user.errors.full_messages.each do |err| %>
@@ -6,49 +7,43 @@
     </div>  
   <% end %>
 
-  <!-- :fname, :lname, :email, :phone, :password, :password_confirmation -->
-<div id="account_info">
-  
 <%= form_for @user do |f| %>
+  <!-- :fname, :lname, :email, :phone, :password, :password_confirmation -->
 
-  <div id="user_info_list">
-
-    <div class="info_box">
-      <%= f.label :fname, "First Name" %><br>
-      <%= f.text_field :fname, :placeholder => "First Name", :class => "placeholder" %>
-    </div>
-  
-    <div class="info_box">
-      <%= f.label :lname, "Last Name"%><br>
-      <%= f.text_field :lname, :placeholder => "Last Name", :class => "placeholder"  %>
-    </div>
-  
-    <div class="info_box">
-      <%= f.label :email %><br>
-      <%= f.text_field :email, :placeholder => "Email Address", :class => "placeholder" %>
-    </div>
-  
-    <div class="info_box">
-      <%= f.label :phone, "Phone Number" %><br>
-      <%= f.text_field :phone, :placeholder => "9999999999", :class => "placeholder" %>
-    </div>
-  
-    <div class="info_box">
-      <%= f.label :password %><br>
-      <%= f.password_field :password, :placeholder => "****", :class => "placeholder" %>
-    </div>
-  
-    <div class="info_box">
-      <%= f.label :password_confirmation %><br>
-      <%= f.password_field :password_confirmation, :placeholder => "****", :class => "placeholder" %>
-    </div>
-  
-    <div id="s-button" class="info_box">
-      <%= f.submit "SAVE", :class => "save_button" %>
-    </div>
+  <div id="newform">
     
-  </div>
+      <p>
+        <%= f.text_field :fname, :placeholder => "FIRST NAME",:class => "newuserinput",:class => "placeholder"%>
+      </p>
   
+      <p>
+
+        <%= f.text_field :lname, :placeholder => "LAST NAME",:class => "newuserinput",:class => "placeholder"  %>
+      </p>
+  
+      <p>
+
+        <%= f.text_field :email, :placeholder => "EMAIL",:class => "newuserinput",:class => "placeholder" %>
+      </p>
+  
+      <p>
+        <%= f.text_field :phone, :placeholder => "PHONE NUMBER",:class => "newuserinput",:class => "placeholder" %>
+      </p>
+  
+      <p>
+        <%= f.password_field :password, :placeholder => "PASSWORD",:class => "newuserinput",:class => "placeholder" %>
+      </p>
+  
+      <p>
+        <%= f.password_field :password_confirmation, :placeholder => "CONFIRM PASSWORD",:class => "newuserinput",:class => "placeholder" %>
+      </p>
+      
+
+  
+      <%= f.submit "SAVE",:class => "newuserinput"%>
+
 <% end %>
 
-</div>  
+
+ </div>
+
