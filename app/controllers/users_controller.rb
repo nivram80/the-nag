@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     # binding.pry
     @user = User.find(params[:id])
+    @user_events = Event.where(:user_id => params[:id])
   end
   
   def new
