@@ -51,7 +51,9 @@
               <div class="row">
                  <div class="small-8 large-8 columns" id ="coolfont" ><%= group.name %></div>
                 <div class="small-2 large-2 columns">
-                ---
+                  <% if @selected_event %>
+                    <%= link_to "Add to event", update_group_path(group.id, @selected_event), :method => :put %>
+                  <% end %>
                 </div>
                 <div class="small-2 large-2 columns"><%= link_to "Edit", edit_group_path(group.id), :class => "left" %></div>
               </div> 
