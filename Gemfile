@@ -8,7 +8,7 @@ gem 'pry-rails', :group => [:development, :test]
 
 gem 'pg'
 gem 'date_validator'
-
+gem 'jquery-ui-rails'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -41,3 +41,5 @@ gem 'unicorn'
 # gem 'debugger'
 
 gem 'dotenv-rails', :groups => [:development, :test]
+
+gem 'twilio-ruby'

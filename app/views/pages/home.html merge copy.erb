@@ -1,0 +1,54 @@
+<<<<<<< HEAD
+<html>
+  <head>
+    
+    <%= stylesheet_link_tag "home.css" %>
+
+ <!-- Removed the <p> tag surrounding the title string. 
+   It's not needed and looks awkward in the window title. -->   
+    <title>
+      The Nag
+    </title>
+  </head>
+  <body>
+    
+    <div>
+    <img class ="logo" src="/assets/largelogo.png" style=" max-width: 350px; display:block; margin: 0 auto;margin-top: 100px;">
+    </div>
+    
+    <div>
+      <p class = "center" > 
+=======
+    <div id="topbannertimes">
+      <div id="innerbanner">
+>>>>>>> master
+        <%= link_to "SIGN UP", :new_user %> | 
+        <% if session[:user_id] %>
+          <%= link_to "Dashboard", :dashboard %>
+        <% else %>
+          <%= link_to "LOG IN", :new_login %>
+        <% end %>
+<<<<<<< HEAD
+      </p>
+      <% if flash[:notice] %>
+        <p class="center notice"><%= flash[:notice] %></p>
+      <% end %>
+    </div>
+    
+<!--
+     <p><em>For testing, the <strong>session[:user_id] == 
+        <%= session[:user_id] || "NONE" %> </strong></em></p> 
+-->
+      
+  </body>
+</html>
+=======
+        </div>
+    </div>
+
+
+
+    <div>
+      <img class ="logo" src="/assets/largelogo.png" style=" max-width: 350px; display:block; margin: 0 auto;margin-top: 150px;">
+    
+>>>>>>> master

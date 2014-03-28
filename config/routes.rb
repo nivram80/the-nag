@@ -3,16 +3,21 @@ TheNag::Application.routes.draw do
   resources :tasks
 
   get "dashboard" => "dashboards#dashboard", :as => :dashboard
+  put "dashboard/:id/:event_id" => "dashboards#update", :as => :update_group
 
   root :to => 'pages#home'
   
   resources :groups
   
+  #get "groups/edit" => "groups#edit", :as => :edit_group
+  
   get "groups/newgrouptask" => "groups#newgrouptask", :as => :new_task
   
   get "groups/new" => "groups#new", :as => :new_group
   
+  post "groups/newtask" => "tasks#new_task_for_group", :as => :new_task_for_group
   
+  post "groups/destroy" => "groups#destroy", :as => :destroy_task
 
   # User routes (All RESTful routes except :index)
   resources :users, :except => [:index]

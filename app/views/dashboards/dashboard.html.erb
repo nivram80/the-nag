@@ -1,48 +1,78 @@
-<h1>Dashboard</h1>
 <div class="lt_col left">
+	<h2>Add an Event</h2>
+
 	<%= form_for @event do |f| %>
 		<% if @event.errors.any? %>
 		  <% @event.errors.full_messages.each do |error_msg| %>
 		    <p><%= error_msg %></p>
 		  <% end %>
 		<% end %>
+
 		<p>
 			<%= f.label "Event Name: " %>
 			<%= f.text_field :name %>
 			<div>
 				<%= f.label "Due: ", :class => "left" %>
-				<%= f.date_select :due, start_year: Time.now.year, 
-																use_short_month: true, 
-																order: [:month, :day, :year] %>
+				<%= f.text_field :due, :class => "datepicker" %>
+				<%#= f.date_select :due, start_year: Time.now.year, 
+																 use_short_month: true, 
+																 order: [:month, :day, :year] %>
 			</div>
 			<%= f.hidden_field :user_id, :value => session[:user_id] %>
 		</p>
+
 		<p>
 			<%= f.submit "Add" %>
 		</p>
+
 	<% end %>
+
+	<h2>Available Groups</h2>
+
+	<%= link_to "Create a Group", :new_group %>
+
+	<div class="group_list">
+	<% if @groups %>
+		<% @groups.each do |group| %>
+			<div class="group_list_item left"><%= link_to "Add to event", update_group_path(group.id, @selected_event), :method => :put %></div>
+			<div class="group_name left"><%= group.name %></div>
+			<div class="edit_group"><%= link_to "Edit", edit_group_path(group.id) %></div>
+		<% end %>
+	<% else %>
+		<p>No groups add yet!</p>
+	<% end %>
+
+	</div>
+
 </div>
 
 <div class="rt_col left">
-	<% if @events.size > 0 %>
 
-		<% @events.each do |event| %>
-			<h2><%= event.name %></h2>
-			<p><%= event.due.strftime("%m/%d/%y") %></p>
-			<p><%= link_to "Delete Event", event_path(event.id), :method => :delete %></p>
+	<%= form_for "Switch Event", url: :dashboard, method: :get do |e| %>
+		<p>
+			<%= collection_select(:event, :id, Event.where("user_id = ?", session[:user_id]), :id, :name) %>
+			<%= e.submit "Switch Event" %>
+		</p>
+	<% end %>
 
-			<% event.groups.each do |group| %>
-				<h3><%= group.name %></h3>
+	<% if @selected_event %>
+		<%# @events.each do |event| %>
+			<h2><%= @selected_event.name %></h2>
+			<p><%= @selected_event.due.strftime("%m/%d/%y") %></p>
+			<p><%= link_to "Delete Event", event_path(@selected_event.id), :method => :delete %></p>
+
+			<% @selected_event.groups.each do |group| %>
+				<h3 class="group"><%= group.name %></h3>
 					
-					<ul>
-						<% group.tasks.each do |task| %>
-							<li class="<%= task.done ? 'done' : 'not_done' %>">
-								<%= link_to "Done", task_path(task.id, :done => true), :method => :put %>
-								<%= task.desc %>
-								<%= link_to "Delete", task_path(task.id), :method => :delete %>
-							</li>
+						<% ordered_tasks = group.tasks.order("created_at DESC") %>
+						<% ordered_tasks.each do |task| %>
+							<div class="list">
+									<div class="left checkbox">
+										<%= link_to "Done", task_path(task.id), :method => :put, :class => (task.done ? 'done' : 'not_done') %></div>
+									<div class="left desc"><%= task.desc %></div>
+									<div class="left"><%= link_to "Delete", task_path(task.id), :method => :delete, :class => "delete" %></div>
+							</div>
 						<% end %> <!-- End of @tasks loop -->
-					</ul>
 
 					<%= form_for @task do |t| %>
 						<p><%= t.text_field :desc, :value => "Add Task"	%></p>
@@ -53,11 +83,9 @@
 
 			<% end %> <!-- End of @groups loop -->
 
-		<% end %> <!-- End of @events loop -->
-
 	<% else %>
 
 		<p>No Events!  Nobody is this organized!</p>
 
-	<% end %> <!-- End of if statement -->
+	<% end %>
 </div>

@@ -1,4 +1,4 @@
-class GroupsController < ActionController::Base
+class GroupsController < ApplicationController
   protect_from_forgery
   
   def new
@@ -11,21 +11,34 @@ class GroupsController < ActionController::Base
     @tasks = Task.where("group_id = #{@group.id}")
     @task = Task.new(:desc => params[:task][:desc], :group_id => @group.id)
     @task.save
-    binding.pry
+
     redirect_to(@group) 
  
   end
+  def update
+    @task = Task.new
+    @task_destroy = Task.find(params[:task][:task_id])
+    @task_destroy.destroy
+    
+    @group = Group.find(params[:task][:group_id])
+    @tasks = Task.where("group_id = #{@group.id}")
+  end
+  
   def edit
+     @group = Group.find(params[:id])
+     @task = Task.new
+     @tasks = Task.where("group_id = #{@group.id}")
+  
   end
   def destroy
   end
   
   def show
-    binding.pry
+
     @group = Group.find(params[:id])
     @tasks = Task.where("group_id = #{@group.id}")
     @task = Task.new
-    binding.pry
+
   end
   
   def newgrouptask
